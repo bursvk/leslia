@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../leslia-api/leslia-api.iml" filepath="$PROJECT_DIR$/../leslia-api/leslia-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../leslia-consumer/leslia-consumer.iml" filepath="$PROJECT_DIR$/../leslia-consumer/leslia-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/leslia-manager.iml" filepath="$PROJECT_DIR$/leslia-manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../leslia-service/leslia-service.iml" filepath="$PROJECT_DIR$/../leslia-service/leslia-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../leslia-web/leslia-web.iml" filepath="$PROJECT_DIR$/../leslia-web/leslia-web.iml" />
+    </modules>
+  </component>
+</project>
