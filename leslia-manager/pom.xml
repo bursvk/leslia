@@ -16,6 +16,8 @@
     </modules>
 
     <properties>
+        <!--编码格式-->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!--单元测试-->
         <junit.version>4.12</junit.version>
         <!--spring 版本 -->
