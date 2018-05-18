@@ -1,6 +1,5 @@
 package com.leslia.base.test;
 
-import org.apache.commons.logging.LogFactory;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
