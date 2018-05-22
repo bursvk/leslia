@@ -1,6 +1,5 @@
 package com.leslia.inter.consumer;
 
-import com.alibaba.dubbo.config.annotation.Reference;
 import com.leslia.inter.api.InitDemoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +15,7 @@ public class InitDemoConsumer {
 
     static {
         logger.info("--加载配置文件--");
-        context = new ClassPathXmlApplicationContext("dubbo_consumer.xml");
+        context = new ClassPathXmlApplicationContext("dubbo-consumer.xml");
         context.start();
     }
 
