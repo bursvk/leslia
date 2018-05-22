@@ -14,18 +14,29 @@ public class InitDemoConsumer {
     public static ClassPathXmlApplicationContext context;
 
     static {
-        logger.info("--加载配置文件--");
         context = new ClassPathXmlApplicationContext("dubbo-consumer.xml");
         context.start();
     }
 
 
-    public static void main(String args[]) throws Exception{
-        logger.info("main 方法");
-        InitDemoService initDemoService=(InitDemoService)context.getBean("initDemoService");
-        String s=initDemoService.helloWorld("苏里");
-        logger.info(s);
-        System.in.read();
+    public static void main(String args[]){
+        try{
+            InitDemoService initDemoService=(InitDemoService)context.getBean("initDemoService");
+            String s=initDemoService.helloWorld("苏里");
+            logger.info(s);
+        }catch (Exception e){
+            logger.error("dubbo consumer fail...");
+        }
+        synchronized (InitDemoConsumer.class){
+            while(true){
+                try{
+                    InitDemoConsumer.class.wait();
+                }catch (InterruptedException e){
+                    logger.error("== synchronized error:",e);
+                }
+            }
+        }
     }
+
 
 }
