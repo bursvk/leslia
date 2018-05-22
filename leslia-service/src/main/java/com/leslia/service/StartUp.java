@@ -13,12 +13,13 @@ public class StartUp {
             ClassPathXmlApplicationContext context=new ClassPathXmlApplicationContext(new String[]{"dubbo-provider.xml"});
             context.start();
         }catch (Exception e){
-            logger.info("== dubbo provider context start error:",e);
+            logger.error("== dubbo provider context start error:",e);
         }
         synchronized (StartUp.class){
             while(true){
                 try{
                     StartUp.class.wait();
+                    logger.info("success! dubbo service in service...");
                 }catch (InterruptedException e){
                     logger.error("== synchronized error:",e);
                 }
