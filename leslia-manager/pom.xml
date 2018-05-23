@@ -12,7 +12,7 @@
         <module>../leslia-api</module>
         <module>../leslia-service</module>
         <module>../leslia-consumer</module>
-        <module>../leslia-web</module>
+        <module>../leslia-rest</module>
     </modules>
 
     <properties>
