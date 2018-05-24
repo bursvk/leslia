@@ -8,7 +8,7 @@
           http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
     <!-- 提供方应用信息，用于计算依赖关系 -->
-    <dubbo:application name="leslia-provider"/>
+    <dubbo:application name="${project.artifactId}"/>
 
     <!-- 使用zookeeper注册中心暴露服务地址 -->
     <!-- <dubbo:registry protocol="zookeeper" address="39.104.56.4:2181,39.104.56.4:2182,39.104.56.4:2183" />-->
