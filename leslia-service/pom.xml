@@ -147,8 +147,8 @@
                                 <configuration>
                                     <tasks>
                                         <echo>测试环境配置文件........</echo>
-                                        <copy file="src/main/resources/dev/dubbo-provider.xml" tofile="${project.build.outputDirectory}/dubbo-provider.xml" overwrite="true"/>
-                                        <copy file="src/main/resources/dev/dubbo-provider.xml" tofile="${project.build.outputDirectory}/META-INF/spring/dubbo-provider.xml" overwrite="true"/>
+                                        <copy file="${project.build.outputDirectory}/dev/dubbo-provider.xml" tofile="${project.build.outputDirectory}/dubbo-provider.xml" overwrite="true"/>
+                                        <copy file="${project.build.outputDirectory}/dev/dubbo-provider.xml" tofile="${project.build.outputDirectory}/META-INF/spring/dubbo-provider.xml" overwrite="true"/>
                                     </tasks>
                                 </configuration>
                             </execution>
@@ -174,8 +174,8 @@
                                 <configuration>
                                     <tasks>
                                         <echo>生产环境配置文件........</echo>
-                                        <copy file="src/main/resources/prod/dubbo-provider.xml" tofile="${project.build.outputDirectory}/dubbo-provider.xml" overwrite="true"/>
-                                        <copy file="src/main/resources/prod/dubbo-provider.xml" tofile="${project.build.outputDirectory}/META-INF/spring/dubbo-provider.xml" overwrite="true"/>
+                                        <copy file="${project.build.outputDirectory}/prod/dubbo-provider.xml" tofile="${project.build.outputDirectory}/dubbo-provider.xml" overwrite="true"/>
+                                        <copy file="${project.build.outputDirectory}/prod/dubbo-provider.xml" tofile="${project.build.outputDirectory}/META-INF/spring/dubbo-provider.xml" overwrite="true"/>
                                     </tasks>
                                 </configuration>
                             </execution>
