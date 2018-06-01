@@ -13,6 +13,8 @@
         <module>../leslia-service</module>
         <module>../leslia-consumer</module>
         <module>../leslia-rest</module>
+        <module>../leslia-web</module>
+        <module>../leslia-util</module>
     </modules>
 
     <properties>
@@ -29,6 +31,10 @@
         <dubbo.version>2.5.8</dubbo.version>
         <!-- zookeeper-->
         <zookeeper.version>3.4.10</zookeeper.version>
+        <!--redis-->
+        <redis.version>2.9.0</redis.version>
+        <!--active mq-->
+        <activemq.version>5.15.4</activemq.version>
     </properties>
 
 
