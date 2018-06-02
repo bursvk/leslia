@@ -13,7 +13,6 @@
         <module>../leslia-service</module>
         <module>../leslia-consumer</module>
         <module>../leslia-rest</module>
-        <module>../leslia-web</module>
         <module>../leslia-util</module>
     </modules>
 

@@ -18,9 +18,20 @@ public class InitDemoServiceTest extends BaseTestDubbo {
 
     @Test
     public void helloWord() throws IOException{
+
         String s=initDemoService.helloWorld("苏里");
         logger.info(s);
-        System.in.read();
+
+        synchronized (InitDemoServiceTest.class){
+            while(true){
+                try{
+                    InitDemoServiceTest.class.wait();
+                }catch (Exception e){
+                    logger.error(e+"");
+                }
+            }
+        }
+
     }
 
 
