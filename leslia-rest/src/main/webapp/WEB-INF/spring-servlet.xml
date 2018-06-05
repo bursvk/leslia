@@ -16,5 +16,6 @@
     </bean>
 
     <import resource="classpath:dubbo-consumer.xml"></import>
+    <import resource="classpath:mq-sender.xml"></import>
 
 </beans>

@@ -1,4 +1,4 @@
-package com.leslia.redis.test;
+package com.leslia.base;
 /**
  * 加载方法不等于执行方法，初始化变量则会赋值
  *             类加载顺序应为 加载静态方法-初始化静态变量-执行静态代码块

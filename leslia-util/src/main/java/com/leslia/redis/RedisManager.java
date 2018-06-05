@@ -1,4 +1,4 @@
-package com.leslia.redis.test;
+package com.leslia.redis;
 
 import redis.clients.jedis.Jedis;
 

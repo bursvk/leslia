@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 @RequestMapping("/inter")
 public class InterController {
@@ -19,7 +21,9 @@ public class InterController {
     private InitDemoService initDemoService;
 
     @RequestMapping("/index")
-    public String index(){
+    public String index(HttpServletRequest request){
+        String contextPath = request.getSession().getServletContext().getRealPath("/");
+        logger.info(contextPath);
         return "index";
     }
 

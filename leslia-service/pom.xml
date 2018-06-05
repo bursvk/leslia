@@ -23,7 +23,7 @@
         </dependency>
         <dependency>
             <groupId>com.leslia</groupId>
-            <artifactId>leslia-util</artifactId>
+            <artifactId>leslia-ware</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
@@ -34,6 +34,7 @@
         </dependency>
      </dependencies>
 
+
     <build>
         <resources>
             <resource>
@@ -41,14 +42,14 @@
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
             </resource>
-            <resource>
+           <!-- <resource>
                 <targetPath>${project.build.directory}/classes/META-INF/spring</targetPath>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
                 <includes>
-                    <include>dubbo-provider.xml</include>
+                    <include>**</include>
                 </includes>
-            </resource>
+            </resource>-->
         </resources>
             <!--<filters>
                 <filter>src/main/filters/filter.properties</filter>
@@ -64,7 +65,7 @@
                 </configuration>
             </plugin>
             <!--构建可运行完整jar包-->
-            <plugin >
+          <!--  <plugin >
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>2.4.3</version>
@@ -81,7 +82,7 @@
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <manifestEntries>
-                                        <Main-Class>com.alibaba.dubbo.container.Main</Main-Class>
+                                        <Main-Class>com.leslia.service.StartUp</Main-Class>
                                     </manifestEntries>
                                 </transformer>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
@@ -95,9 +96,9 @@
                     </execution>
                 </executions>
             </plugin>
-
+-->
             <!-- 打包jar文件时，配置manifest文件，加入lib包的jar依赖 -->
-<!--            <plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>2.4</version>
@@ -110,29 +111,28 @@
                         </manifest>
                     </archive>
                 </configuration>
-            </plugin>-->
+            </plugin>
             <!-- 拷贝依赖的jar包到lib目录 -->
-  <!--          <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>copy</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>copy-dependencies</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>
-                                ${project.build.directory}/lib
-                            </outputDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>-->
+            <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <executions>
+                <execution>
+                    <id>copy</id>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>copy-dependencies</goal>
+                    </goals>
+                    <configuration>
+                        <outputDirectory>
+                            ${project.build.directory}/lib
+                        </outputDirectory>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
         </plugins>
     </build>
-
 
     <profiles>
         <profile>
@@ -152,7 +152,7 @@
                                     <tasks>
                                         <echo>测试环境配置文件........</echo>
                                         <copy file="${project.build.outputDirectory}/dev/dubbo-provider.xml" tofile="${project.build.outputDirectory}/dubbo-provider.xml" overwrite="true"/>
-                                        <copy file="${project.build.outputDirectory}/dev/dubbo-provider.xml" tofile="${project.build.outputDirectory}/META-INF/spring/dubbo-provider.xml" overwrite="true"/>
+                                       <!-- <copy file="${project.build.outputDirectory}/dev/dubbo-provider.xml" tofile="${project.build.outputDirectory}/META-INF/spring/dubbo-provider.xml" overwrite="true"/>-->
                                     </tasks>
                                 </configuration>
                             </execution>
@@ -178,7 +178,7 @@
                                     <tasks>
                                         <echo>生产环境配置文件........</echo>
                                         <copy file="${project.build.outputDirectory}/prod/dubbo-provider.xml" tofile="${project.build.outputDirectory}/dubbo-provider.xml" overwrite="true"/>
-                                        <copy file="${project.build.outputDirectory}/prod/dubbo-provider.xml" tofile="${project.build.outputDirectory}/META-INF/spring/dubbo-provider.xml" overwrite="true"/>
+                                        <!--<copy file="${project.build.outputDirectory}/prod/dubbo-provider.xml" tofile="${project.build.outputDirectory}/META-INF/spring/dubbo-provider.xml" overwrite="true"/>-->
                                     </tasks>
                                 </configuration>
                             </execution>

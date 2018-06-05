@@ -10,7 +10,7 @@ public class StartUp {
 
     public static void main(String args[]){
         try{
-            ClassPathXmlApplicationContext context=new ClassPathXmlApplicationContext(new String[]{"dubbo-provider.xml"});
+            ClassPathXmlApplicationContext context=new ClassPathXmlApplicationContext(new String[]{"application-service.xml"});
             context.start();
         }catch (Exception e){
             logger.error("== dubbo provider context start error:",e);
