@@ -10,20 +10,20 @@ public class StartUp {
 
     public static void main(String args[]){
         try{
-            ClassPathXmlApplicationContext context=new ClassPathXmlApplicationContext(new String[]{"application-service.xml"});
+            ClassPathXmlApplicationContext context=new ClassPathXmlApplicationContext(new String[]{"classpath*:spring/*.xml"});
             context.start();
-        }catch (Exception e){
-            logger.error("== dubbo provider context start error:",e);
-        }
-        synchronized (StartUp.class){
-            while(true){
-                try{
-                    StartUp.class.wait();
-                    logger.info("success! dubbo service in service...");
-                }catch (InterruptedException e){
-                    logger.error("== synchronized error:",e);
+            synchronized (StartUp.class){
+                while(true){
+                    try{
+                        StartUp.class.wait();
+                        logger.info("success! dubbo service in service...");
+                    }catch (InterruptedException e){
+                        logger.error("== synchronized error:",e);
+                    }
                 }
             }
+        }catch (Exception e){
+            logger.error("== dubbo provider context start error:",e);
         }
     }
 }

@@ -10,7 +10,7 @@
     
     <dubbo:application name="leslia-consumer"/>
     
-    <dubbo:registry protocol="zookeeper" address="127.0.0.1:2181"/>
+    <dubbo:registry protocol="zookeeper" address="${address}"/>
 
     <dubbo:reference id="initDemoService"
                      interface="com.leslia.inter.api.InitDemoService" />

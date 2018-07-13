@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leslia.inter.mapper.BookMapper">
+
+    <resultMap id="Book" type="com.leslia.inter.pojo.Book">
+        <id column="book_id"              property="bookId"/>
+        <result column="book_name"        property="book_name"/>
+        <result column="author"            property="author"/>
+        <result column="create_time"      property="createTime"/>
+    </resultMap>
+
+    <insert id="insertBook" parameterType="com.leslia.inter.pojo.Book">
+        INSERT INTO leslia_books (book_name,author,create_time)
+        VALUES(#{bookName},#{author},#{createTime})
+    </insert>
+
+</mapper>

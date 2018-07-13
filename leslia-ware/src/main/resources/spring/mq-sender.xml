@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:amq="http://activemq.apache.org/schema/core"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://activemq.apache.org/schema/core
+      http://activemq.apache.org/schema/core/activemq-core-5.8.0.xsd">
+
+
+
+    <!--JMS服务厂商 ActiveMQ-->
+    <amq:connectionFactory id="amqConnectionFactory" brokerURL="tcp://39.105.98.191:61616"/>
+
+    <!--JMS链接工厂-->
+    <bean id="connectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
+        <property name="targetConnectionFactory" ref="amqConnectionFactory"></property>
+        <property name="sessionCacheSize" value="10" />
+    </bean>
+
+    <!--JmsTemplate 消息发送者-->
+    <!--Queue类型 队列模式-->
+    <bean id="jmsQueueTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <constructor-arg ref="connectionFactory"></constructor-arg>
+        <property name="pubSubDomain" value="false"></property>
+    </bean>
+    <!--Topic类型 发布/订阅模式-->
+    <bean id="jmsTopicTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <constructor-arg ref="connectionFactory"></constructor-arg>
+        <property name="pubSubDomain" value="true"></property>
+    </bean>
+
+    <bean id="queueSender" class="com.leslia.mq.QueueSender">
+        <property name="jmsTemplate" ref="jmsQueueTemplate"></property>
+    </bean>
+
+    <bean id="topicSender" class="com.leslia.mq.TopicSender">
+        <property name="jmsTemplate" ref="jmsTopicTemplate"></property>
+    </bean>
+
+</beans>

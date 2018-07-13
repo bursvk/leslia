@@ -24,6 +24,7 @@
         <junit.version>4.12</junit.version>
         <!--spring 版本 -->
         <spring.version>5.0.5.RELEASE</spring.version>
+        <spring.session.version>2.0.4.RELEASE</spring.session.version>
         <!-- log4j日志文件管理包版本 -->
         <slf4j.version>1.7.25</slf4j.version>
         <log4j.version>2.9.1</log4j.version>
@@ -33,8 +34,21 @@
         <zookeeper.version>3.4.10</zookeeper.version>
         <!--redis-->
         <redis.version>2.9.0</redis.version>
-        <!--active mq-->
+        <redis.data.version>2.0.7.RELEASE</redis.data.version>
+        <!--jms-->
+        <jms.version>2.0.1</jms.version>
         <activemq.version>5.15.4</activemq.version>
+        <!--mysql-->
+        <mysql.version>8.0.11</mysql.version>
+        <!--mybatis-->
+        <druid.version>1.1.9</druid.version>
+        <mybatis.version>3.4.5</mybatis.version>
+        <mybatis-spring.version>1.3.1</mybatis-spring.version>
+        <mybatis-generator.version>1.3.5</mybatis-generator.version>
+        <mybatis-pagehelper.version>5.1.4</mybatis-pagehelper.version>
+
+        <shiro.version>1.2.1</shiro.version>
+
     </properties>
 
 
