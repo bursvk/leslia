@@ -1,4 +1,3 @@
-<%@ page import="com.leslia.user.pojo.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>

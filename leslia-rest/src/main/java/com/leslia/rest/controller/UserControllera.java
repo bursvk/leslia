@@ -1,8 +1,8 @@
-package com.leslia.shiro.rest;
+package com.leslia.rest.controller;
 
+import com.leslia.user.pojo.ShiroUser;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
-import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/sirUser")
+public class UserControllera {
 
-    private Logger logger= LoggerFactory.getLogger(UserController.class);
+    private Logger logger= LoggerFactory.getLogger(UserControllera.class);
 
     @RequestMapping("/login")
     @ResponseBody
@@ -66,13 +66,18 @@ public class UserController {
     }
 
 
-    @RequestMapping("/session")
+    @RequestMapping("/topic")
     @ResponseBody
-    public String session(){
-        Session session=SecurityUtils.getSubject().getSession();
-        String sessionId=session.getId()+"";
-        return sessionId;
+    public void getTopic(){
+        System.out.println(SecurityUtils.getSubject().getPrincipal());
+        System.out.println(SecurityUtils.getSubject().isAuthenticated());
+        if(SecurityUtils.getSubject().getPrincipal()!=null){
+            ShiroUser user=(ShiroUser) SecurityUtils.getSubject().getPrincipal();
+            System.out.println(user.getUsername());
+            System.out.println(user.getPassword());
+        }
     }
+
 
 
 

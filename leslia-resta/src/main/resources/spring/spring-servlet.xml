@@ -10,35 +10,11 @@
 
     <context:component-scan base-package="com.leslia"/>
 
-    <mvc:annotation-driven/>
-
-    <mvc:resources mapping="/images/**" location="/resources/images/" />
-    <mvc:resources mapping="/html/**" location="/resources/html/" />
-    <mvc:resources mapping="/js/**" location="/resources/js/" />
-
     <!-- 视图页面配置 -->
     <bean id="viewResolver"  class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/" />
         <property name="suffix" value=".jsp" />
     </bean>
-
-
-    <bean id="redisHttpSessionConfiguration" class="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration">
-        <property name="maxInactiveIntervalInSeconds" value="1800" />
-    </bean>
-
-    <bean id="propertyConfigurer" class="com.leslia.plugin.Encrypt">
-        <property name="locations">
-            <list>
-                <value>classpath:conf/redis.properties</value>
-            </list>
-        </property>
-    </bean>
-
-    <import resource="classpath:spring/redis.xml"></import>
-    <import resource="classpath:spring/mq-sender.xml"></import>
-    <import resource="classpath:spring/dubbo-consumer.xml"></import>
-
 
 
 </beans>

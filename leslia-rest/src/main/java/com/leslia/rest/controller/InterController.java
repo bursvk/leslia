@@ -1,4 +1,4 @@
-package com.leslia.rest.inter;
+package com.leslia.rest.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.leslia.inter.api.BookService;
@@ -7,8 +7,6 @@ import com.leslia.inter.api.InitDemoService;
 import com.leslia.inter.pojo.Book;
 import com.leslia.util.data.Result;
 import com.leslia.util.data.ResultUtil;
-import com.leslia.util.enums.EnumCode;
-import com.leslia.util.exception.BaseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -35,6 +33,8 @@ public class InterController{
     @Reference
     private HelpCategoryService helpCategoryService;
 
+
+
     @RequestMapping("/index")
     @ResponseBody
     public Result index() throws Exception{
@@ -46,9 +46,19 @@ public class InterController{
 
     @RequestMapping("/index1")
     @ResponseBody
-    public Result index1(){
-        throw new BaseException(EnumCode.FAIL_2);
-        //return new ResultUtil().setError(100,"神马错误");
+    public void index1(HttpServletRequest request){
+        String uri = request.getRequestURI();//返回请求行中的资源名称
+        String url = request.getRequestURL().toString();//获得客户端发送请求的完整url
+        String ip = request.getRemoteAddr();//返回发出请求的IP地址
+        String params = request.getQueryString();//返回请求行中的参数部分
+        String host=request.getRemoteHost();//返回发出请求的客户机的主机名
+        int port =request.getRemotePort();//返回发出请求的客户机的端口号。
+        System.out.println(ip);
+        System.out.println(url);
+        System.out.println(uri);
+        System.out.println(params);
+        System.out.println(host);
+        System.out.println(port);
     }
 
 

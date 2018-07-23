@@ -1,4 +1,4 @@
-package com.leslia.rest.inter;
+package com.leslia.rest.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.leslia.mq.QueueSender;
