@@ -12,7 +12,16 @@ public class ShiroUser implements java.io.Serializable {
 
     private String role;
 
-
+    @Override
+    public String toString() {
+        return "ShiroUser{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", age='" + age + '\'' +
+                ", name='" + name + '\'' +
+                ", role='" + role + '\'' +
+                '}';
+    }
 
     public String getUsername() {
         return username;

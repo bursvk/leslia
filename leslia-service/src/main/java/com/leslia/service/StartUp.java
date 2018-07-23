@@ -9,7 +9,8 @@ public class StartUp {
     private static Logger logger= LoggerFactory.getLogger(StartUp.class);
 
     public static void main(String args[]){
-        try{
+        new ClassPathXmlApplicationContext(new String[]{"classpath*:spring/*.xml"});
+      /*  try{
             ClassPathXmlApplicationContext context=new ClassPathXmlApplicationContext(new String[]{"classpath*:spring/*.xml"});
             context.start();
             synchronized (StartUp.class){
@@ -24,6 +25,6 @@ public class StartUp {
             }
         }catch (Exception e){
             logger.error("== dubbo provider context start error:",e);
-        }
+        }*/
     }
 }

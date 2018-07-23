@@ -6,14 +6,10 @@ public class JavaBase {
 
     public String password="user";
 
+    int i;
+    public void a(){
 
-    public static void main(String args[]){
-        User user=new User();
-        String username=user.userName;
-        String password=user.password;
-        System.out.println(username);
-        System.out.println(password);
-        user.aa();
+        i++;
     }
 
 }

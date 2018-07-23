@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://code.alibabatech.com/schema/dubbo
+      http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <property name="loginUrl" value="/view/login"/>
+        <property name="successUrl" value="/view/success"/>
+        <property name="unauthorizedUrl" value="/view/unauthorized"/>
+        <property name="filterChainDefinitions">
+            <value>
+                /images/*=anon
+                /html/*=roles[admin]
+                /view/index=anon
+                /view/success=anon
+                /view/fail=anon
+                /view/user=roles[user]
+                /view/admin=roles[admin]
+                /logout=logout
+            </value>
+        </property>
+    </bean>
+
+    <bean id="securityManager"  class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="cacheManager" ref="cacheManager"/>
+        <property name="realm" ref="myRealm"/>
+        <property name="sessionManager" ref="sessionManager"/>
+    </bean>
+
+    <bean id="myRealm"  class="com.leslia.sso.client.shiro.realm.ShiroRealm">
+        <property name="cacheManager" ref="cacheManager" />
+        <property name="shiroUserService" ref="shiroUserService"/>
+        <property name="credentialsMatcher" ref="credentialsMatcher"/>
+    </bean>
+
+    <!-- 会话管理器 -->
+    <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+        <!-- sessionDAO -->
+        <property name="sessionDAO" ref="sessionDAO"/>
+        <property name="sessionListeners">
+            <list><ref bean="sessionListener"/></list>
+        </property>
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!-- 会话DAO，可重写，持久化session -->
+    <bean id="sessionDAO" class="com.leslia.sso.client.shiro.session.ShiroSessionDao"/>
+
+
+    <!-- 会话监听器 -->
+    <bean id="sessionListener" class="com.leslia.sso.client.shiro.listener.ShiroSessionListener"/>
+
+    <!-- session工厂 -->
+    <bean id="sessionFactory" class="com.leslia.sso.client.shiro.session.ShiroSessionFactory"/>
+
+
+    <!-- 设置SecurityUtils，相当于调用SecurityUtils.setSecurityManager(securityManager) -->
+    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="staticMethod" value="org.apache.shiro.SecurityUtils.setSecurityManager"/>
+        <property name="arguments" ref="securityManager"/>
+    </bean>
+
+    <dubbo:reference id="shiroUserService" interface="com.leslia.user.api.ShiroUserService" />
+
+    <!-- 用户授权信息Cache -->
+    <bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager" />
+
+    <!-- 配置凭证算法匹配器 -->
+    <bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+    <property name="hashAlgorithmName" value="MD5"></property> <!-- MD5加密 -->
+    <property name="hashIterations" value="1024"></property> <!-- 加密次数 -->
+    </bean>
+
+    <!-- 配置 Bean 后置处理器: 会自动的调用和 Spring 整合后各个组件的生命周期方法. -->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+
+</beans>

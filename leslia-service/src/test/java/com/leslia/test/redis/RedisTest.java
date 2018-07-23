@@ -3,6 +3,7 @@ package com.leslia.test.redis;
 
 import com.leslia.redis.RedisUtil;
 import com.leslia.test.pojo.Student;
+import com.leslia.util.data.RedisKey;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -61,6 +62,13 @@ public class RedisTest {
       student.setAge("10");
       list.add(student);
       redisUtil.lSet("sList",list);
+    }
+
+
+    @Test
+    public void incr(){
+       long userId= redisUtil.incr(RedisKey.userId,1);
+       System.out.println(userId);
     }
 
 
