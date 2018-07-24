@@ -1,14 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <html>
 <head>
     <title>Title</title>
 </head>
 <body>
-登录成功
-success
+登录失败
 
-
-<a href="/logout">退出登录</a>
+<%--<a href="/user/logOut">退出登录</a>--%>
 
 
 </body>

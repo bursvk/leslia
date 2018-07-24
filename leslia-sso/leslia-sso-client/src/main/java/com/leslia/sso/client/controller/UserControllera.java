@@ -1,4 +1,4 @@
-package com.leslia.rest.controller;
+package com.leslia.sso.client.controller;
 
 import com.leslia.user.pojo.ShiroUser;
 import org.apache.shiro.SecurityUtils;

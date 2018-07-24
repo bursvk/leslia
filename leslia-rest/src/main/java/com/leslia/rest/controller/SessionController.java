@@ -16,8 +16,6 @@ public class SessionController {
 
     private Logger logger= LoggerFactory.getLogger(SessionController.class);
 
-    private MySessionContext myc=MySessionContext.getInstance();
-
 
     @RequestMapping("/setSession")
     @ResponseBody
@@ -32,10 +30,7 @@ public class SessionController {
     public String getSession(HttpServletRequest request){
         HttpSession session=request.getSession();
         logger.info("sessionId:"+session.getId());
-        HttpSession session1=myc.getSession(session.getId());
-        String name=(String)session1.getAttribute("name");
-        System.out.println(myc.mymap.size());
-        return name;
+        return "";
     }
 
     @RequestMapping("/getSessionV")

@@ -31,6 +31,7 @@
         <property name="locations">
             <list>
                 <value>classpath:conf/redis.properties</value>
+                <value>classpath:conf/shiro.properties</value>
             </list>
         </property>
     </bean>
@@ -38,6 +39,7 @@
     <import resource="classpath:spring/redis.xml"></import>
     <import resource="classpath:spring/mq-sender.xml"></import>
     <import resource="classpath:spring/dubbo-consumer.xml"></import>
+    <import resource="classpath:spring/spring-shiro.xml"></import>
 
 
 

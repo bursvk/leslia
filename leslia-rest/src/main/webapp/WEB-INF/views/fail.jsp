@@ -6,10 +6,6 @@
 </head>
 <body>
 登录失败
-${message}
-${username}
-
-<%--<a href="/user/logOut">退出登录</a>--%>
 
 
 </body>

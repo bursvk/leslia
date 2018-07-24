@@ -16,5 +16,15 @@
         <property name="suffix" value=".jsp" />
     </bean>
 
+    <bean id="propertyConfigurer" class="com.leslia.plugin.Encrypt">
+        <property name="locations">
+            <list>
+                <value>classpath:conf/shiro.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <import resource="spring-shiro.xml"/>
+
 
 </beans>
