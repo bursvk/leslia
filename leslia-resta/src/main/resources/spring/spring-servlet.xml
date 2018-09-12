@@ -8,7 +8,17 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context-4.0.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <context:component-scan base-package="com.leslia"/>
+    <context:component-scan base-package="com.leslia.resta.controller"/>
+
+    <mvc:annotation-driven />
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/view/*"/>
+            <bean class="com.leslia.resta.interceptor.MyInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
     <!-- 视图页面配置 -->
     <bean id="viewResolver"  class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -16,7 +26,7 @@
         <property name="suffix" value=".jsp" />
     </bean>
 
-    <bean id="propertyConfigurer" class="com.leslia.plugin.Encrypt">
+    <bean id="propertyConfigurer" class="com.leslia.util.base.Encrypt">
         <property name="locations">
             <list>
                 <value>classpath:conf/shiro.properties</value>
@@ -24,7 +34,8 @@
         </property>
     </bean>
 
-    <import resource="spring-shiro.xml"/>
+    <import resource="classpath:spring/spring-shiro.xml"/>
+    <import resource="classpath:spring/websocket.xml"/>
 
 
 </beans>

@@ -1,7 +1,7 @@
 package com.leslia.lock.test;
 
-import com.leslia.redis.RedisLock;
-import com.leslia.zookeeper.DistributedLock;
+import com.leslia.ware.lock.RedisLock;
+import com.leslia.ware.lock.ZookeeperLock;
 
 import java.util.UUID;
 
@@ -10,7 +10,7 @@ public class Service {
 
     int n = 500;
 
-    public void seckill() {
+    public void seckil() {
         // 返回锁的value值，供释放锁时候进行判断
         RedisLock redisLock=new RedisLock();
         String requestId= UUID.randomUUID().toString();
@@ -24,8 +24,8 @@ public class Service {
         }
     }
 
-    public void seckill1(){
-        DistributedLock lock   = new DistributedLock("lock");
+    public void seckill(){
+        ZookeeperLock lock   = new ZookeeperLock("lock");
         lock.lock();
         --n;
         System.out.println(n);

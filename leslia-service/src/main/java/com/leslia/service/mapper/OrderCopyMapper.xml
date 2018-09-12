@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.leslia.service.mapper.OrderCopyMapper" >
+  <resultMap id="Order" type="com.leslia.api.pojo.OrderCopy" >
+    <id column="BillNumber" property="BillNumber" />
+    <result column="BuildDate" property="BuildDate" />
+    <result column="Customer" property="Customer" />
+    <result column="GoodsName" property="GoodsName" />
+    <result column="Amount" property="Amount"/>
+    <result column="SaleMoney" property="SaleMoney"/>
+  </resultMap>
+
+
+  <insert id="insert" parameterType="com.leslia.api.pojo.OrderCopy" >
+    insert into order_copy
+    (BillNumber,BuildDate,Customer,GoodsName,Amount,SaleMoney)
+    values
+    (#{BillNumber},#{BuildDate},#{Customer},#{GoodsName},#{Amount},#{SaleMoney})
+  </insert>
+
+
+</mapper>

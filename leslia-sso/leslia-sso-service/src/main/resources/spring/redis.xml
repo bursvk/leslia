@@ -96,7 +96,7 @@
     </bean >
 
     <!--自定义redis工具类,在需要缓存的地方注入此类  -->
-    <bean id="redisUtil" class="com.leslia.redis.RedisUtil">
+    <bean id="redisUtil" class="com.leslia.ware.redis.RedisUtil">
         <property name="redisTemplate" ref="redisTemplate" />
     </bean>
 

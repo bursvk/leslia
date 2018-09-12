@@ -1,6 +1,6 @@
 package com.leslia.sso.client.controller;
 
-import com.leslia.user.pojo.ShiroUser;
+import com.leslia.api.pojo.ShiroUser;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;

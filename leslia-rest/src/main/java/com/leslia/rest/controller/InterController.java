@@ -1,10 +1,10 @@
 package com.leslia.rest.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.leslia.inter.api.BookService;
-import com.leslia.inter.api.HelpCategoryService;
-import com.leslia.inter.api.InitDemoService;
-import com.leslia.inter.pojo.Book;
+import com.leslia.api.api.BookService;
+import com.leslia.api.api.HelpCategoryService;
+import com.leslia.api.api.InitDemoService;
+import com.leslia.api.pojo.Book;
 import com.leslia.util.data.Result;
 import com.leslia.util.data.ResultUtil;
 import org.slf4j.Logger;

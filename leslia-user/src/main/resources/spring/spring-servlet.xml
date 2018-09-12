@@ -29,10 +29,10 @@
         <!--<property name="maxInactiveIntervalInSeconds" value="1800" />-->
     <!--</bean>-->
 
-    <bean id="propertyConfigurer" class="com.leslia.plugin.Encrypt">
+    <bean id="propertyConfigurer" class="com.leslia.util.base.Encrypt">
         <property name="locations">
             <list>
-                <value>classpath:conf/redis.properties</value>
+                <value>classpath:conf/ware/redis.properties</value>
             </list>
         </property>
     </bean>

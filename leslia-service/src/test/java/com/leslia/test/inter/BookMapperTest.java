@@ -1,8 +1,8 @@
 package com.leslia.test.inter;
 
 import com.leslia.test.base.BaseTestLocal;
-import com.leslia.inter.mapper.BookMapper;
-import com.leslia.inter.pojo.Book;
+import com.leslia.service.mapper.BookMapper;
+import com.leslia.api.pojo.Book;
 import org.junit.Test;
 
 import javax.annotation.Resource;

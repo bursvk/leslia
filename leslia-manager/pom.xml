@@ -18,6 +18,8 @@
         <module>../leslia-resta</module>
         <module>../leslia-user</module>
         <module>../leslia-sso</module>
+        <module>../leslia-search</module>
+        <module>../leslia-fastdfs</module>
     </modules>
 
     <properties>
@@ -55,7 +57,19 @@
         <shiro.version>1.2.1</shiro.version>
         <!--cas单点登录-->
         <cas.client.version>3.5.0</cas.client.version>
-
+        <!--ehcache-->
+        <ehcache.version>2.10.4</ehcache.version>
+        <mybatis.ehcache.version>1.1.0</mybatis.ehcache.version>
+        <!--fluent-validator-->
+        <fluent.validator.version>1.0.9</fluent.validator.version>
+        <!--job-->
+        <quartz.version>2.3.0</quartz.version>
+        <tbschedule.version>3.3.3.2</tbschedule.version>
+        <elastic.version>2.1.5</elastic.version>
+        <!--netty-socketio-->
+        <netty.socketio.version>1.7.16</netty.socketio.version>
+        <!--solr-->
+        <solr.solrj.version>7.4.0</solr.solrj.version>
     </properties>
 
 
@@ -74,6 +88,21 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
             <version>${spring.version}</version>
         </dependency>
         <dependency>

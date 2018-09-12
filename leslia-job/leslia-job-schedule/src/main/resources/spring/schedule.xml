@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+    <!-- 配置进行解密  -->
+    <bean id="propertyConfigurer" class="com.leslia.util.base.Encrypt">
+        <property name="locations">
+            <list>
+                <value>classpath:conf/schedule.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="scheduleManagerFactory"
+          class="com.taobao.pamirs.schedule.strategy.TBScheduleManagerFactory"
+          init-method="init">
+        <property name="zkConfig">
+            <map>
+                <entry key="zkConnectString" value="${schedule.zookeeper.address}" />
+                <entry key="rootPath" value="${schedule.root.catalog}" />
+                <entry key="zkSessionTimeout" value="${schedule.timeout}" />
+                <entry key="userName" value="${schedule.username}" />
+                <entry key="password" value="${schedule.password}" />
+                <entry key="isCheckParentPath" value="true" />
+            </map>
+        </property>
+    </bean>
+
+    <context:component-scan base-package="com.leslia.job.schedule.jobs"/>
+
+</beans>

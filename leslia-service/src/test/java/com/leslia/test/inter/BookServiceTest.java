@@ -1,8 +1,8 @@
 package com.leslia.test.inter;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.leslia.inter.api.BookService;
-import com.leslia.inter.pojo.Book;
+import com.leslia.api.api.BookService;
+import com.leslia.api.pojo.Book;
 import com.leslia.test.base.BaseTestDubbo;
 import org.junit.Test;
 
@@ -20,6 +20,12 @@ public class BookServiceTest extends BaseTestDubbo {
         book.setAuthor("乔安娜柯尔");
         book.setCreateTime(new Date());
         bookService.insertBook1(book);
+    }
+
+    @Test
+    public void selectBook(){
+        Book book=bookService.selectBook(2);
+        System.out.println(book.toString());
     }
 
 

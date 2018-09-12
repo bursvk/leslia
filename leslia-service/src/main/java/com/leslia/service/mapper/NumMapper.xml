@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leslia.service.mapper.NumMapper">
+    <resultMap id="Num" type="com.leslia.api.pojo.Num">
+        <id column="id"        property="id"/>
+        <result column="num"    property="num"/>
+        <result column="code"   property="code"/>
+        <result column="date"   property="date"/>
+    </resultMap>
+
+    <insert id="insertNum" parameterType="com.leslia.api.pojo.Num">
+      INSERT INTO leslia_num(code,num,date)
+      VALUES (#{code},#{num},#{date})
+    </insert>
+
+    <select id="selectNum" parameterType="int" resultMap="Num">
+        SELECT * FROM leslia_num WHERE id=#{id}
+    </select>
+
+    <update id="updateNum" parameterType="com.leslia.api.pojo.Num">
+        UPDATE leslia_num SET
+        code = #{code},
+        num  = #{num},
+        date = #{date}
+        WHERE id=#{id}
+    </update>
+
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
+
+</mapper>

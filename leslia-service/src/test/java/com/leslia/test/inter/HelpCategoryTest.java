@@ -2,8 +2,8 @@ package com.leslia.test.inter;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.github.pagehelper.PageInfo;
-import com.leslia.inter.api.HelpCategoryService;
-import com.leslia.inter.pojo.HelpCategory;
+import com.leslia.api.api.HelpCategoryService;
+import com.leslia.api.pojo.HelpCategory;
 import com.leslia.test.base.BaseTestDubbo;
 import org.junit.Test;
 

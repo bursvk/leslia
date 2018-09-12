@@ -28,6 +28,7 @@
                 /logout = logoutFilter
                 /view/admin = roles[admin]
                 /view/* = user
+                /** = anon
             </value>
           </property>
       </bean>
@@ -56,7 +57,15 @@
       <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
           <property name="subjectFactory" ref="casSubjectFactory"></property>
           <property name="realm" ref="casRealm" />
+          <!-- 在安全管理器中注入缓存管理器 -->
+          <property name="cacheManager" ref="cacheManager"></property>
       </bean>
+
+    <!-- 注册ehcache缓存管理器 -->
+    <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+        <!-- 注册配置文件的路径 -->
+        <property name="cacheManagerConfigFile" value="classpath:ehcache.xml"/>
+    </bean>
 
       <bean id="casSubjectFactory" class="org.apache.shiro.cas.CasSubjectFactory"></bean>
 

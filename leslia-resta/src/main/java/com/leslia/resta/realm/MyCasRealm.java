@@ -18,8 +18,8 @@ public class MyCasRealm extends CasRealm {
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+        logger.info("获取 [角色][权限]");
         String username = (String)principals.getPrimaryPrincipal();
-        logger.info("username:"+username);
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
         Set<String> set=new HashSet<>();
         set.add(username);

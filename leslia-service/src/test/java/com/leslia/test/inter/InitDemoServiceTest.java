@@ -2,7 +2,7 @@ package com.leslia.test.inter;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.leslia.test.base.BaseTestDubbo;
-import com.leslia.inter.api.InitDemoService;
+import com.leslia.api.api.InitDemoService;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

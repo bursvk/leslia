@@ -1,9 +1,9 @@
 package com.leslia.test.redis;
 
 
-import com.leslia.redis.RedisUtil;
 import com.leslia.test.pojo.Student;
 import com.leslia.util.data.RedisKey;
+import com.leslia.ware.redis.RedisUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -70,6 +70,7 @@ public class RedisTest {
        long userId= redisUtil.incr(RedisKey.userId,1);
        System.out.println(userId);
     }
+
 
 
 

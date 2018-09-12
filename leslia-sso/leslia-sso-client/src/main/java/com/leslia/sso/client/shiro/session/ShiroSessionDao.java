@@ -1,6 +1,6 @@
 package com.leslia.sso.client.shiro.session;
 
-import com.leslia.redis.RedisUtil;
+import com.leslia.ware.redis.RedisUtil;
 import com.leslia.sso.client.util.SerializableUtil;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.session.mgt.eis.CachingSessionDAO;

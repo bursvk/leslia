@@ -1,7 +1,7 @@
 package com.leslia.sso.service.controller;
 
-import com.leslia.redis.RedisUtil;
-import com.leslia.user.pojo.User;
+import com.leslia.ware.redis.RedisUtil;
+import com.leslia.api.pojo.User;
 import com.leslia.util.data.RedisKey;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

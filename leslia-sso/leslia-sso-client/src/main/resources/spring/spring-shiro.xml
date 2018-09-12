@@ -65,7 +65,7 @@
         <property name="arguments" ref="securityManager"/>
     </bean>
 
-    <dubbo:reference id="shiroUserService" interface="com.leslia.user.api.ShiroUserService" />
+    <dubbo:reference id="shiroUserService" interface="com.leslia.api.api.ShiroUserService" />
 
     <!-- 用户授权信息Cache -->
     <bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager" />

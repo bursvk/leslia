@@ -1,5 +1,6 @@
 package com.leslia.java.base;
 
+import com.leslia.util.sequence.Sequence;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -79,6 +80,14 @@ public class Base {
         for(Map.Entry<String,Object> entry:map.entrySet()){
             System.out.println(entry.getKey()+"  "+entry.getValue());
         }
+    }
+
+
+    @Test
+    public void test2(){
+        Sequence sequence=new Sequence(0,0);
+        Long id=sequence.nextId();
+        System.out.println(id);
     }
 
 

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.leslia.service.mapper.OrderMapper" >
+  <resultMap id="Order" type="com.leslia.api.pojo.Order" >
+    <id column="BillNumber" property="BillNumber" />
+    <result column="BuildDate" property="BuildDate" />
+    <result column="Customer" property="Customer" />
+    <result column="GoodsName" property="GoodsName" />
+    <result column="Amount" property="Amount"/>
+    <result column="SaleMoney" property="SaleMoney"/>
+  </resultMap>
+
+
+  <insert id="insert" parameterType="com.leslia.api.pojo.Order" >
+    insert into `order`
+    (BillNumber,BuildDate,Customer,GoodsName,Amount,SaleMoney)
+    values
+    (#{BillNumber},#{BuildDate},#{Customer},#{GoodsName},#{Amount},#{SaleMoney})
+  </insert>
+  
+  <select id="getCopyList" parameterType="java.util.Map" resultMap="Order">
+    SELECT * FROM `order` WHERE RIGHT(BuildDate,1) IN
+    <foreach collection="idList" item="id"  open="(" close=")" separator="," >
+      #{id}
+    </foreach>
+    AND BillNumber NOT IN (
+    SELECT BillNumber FROM order_copy WHERE RIGHT(BuildDate,1) IN
+    <foreach collection="idList" item="id"  open="(" close=")" separator="," >
+      #{id}
+    </foreach>
+    )
+    LIMIT #{limit}
+  </select>
+
+
+</mapper>

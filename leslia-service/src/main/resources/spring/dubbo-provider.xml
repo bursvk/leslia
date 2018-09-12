@@ -2,11 +2,8 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
-       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
       http://www.springframework.org/schema/beans/spring-beans.xsd
-      http://www.springframework.org/schema/context
-      http://www.springframework.org/schema/context/spring-context-4.0.xsd
       http://code.alibabatech.com/schema/dubbo
       http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
@@ -20,18 +17,29 @@
     <!-- 用dubbo协议在20880端口暴露服务 -->
     <dubbo:protocol name="dubbo" port="20880" />
 
+    <bean id="bookServiceImpl" class="com.leslia.service.mapper.impl.BookServiceImpl"/>
+    <dubbo:service interface="com.leslia.api.api.BookService" ref="bookServiceImpl" timeout="10000"/>
 
-    <dubbo:service interface="com.leslia.inter.api.BookService" ref="bookServiceImpl" timeout="10000"/>
+    <bean id="messageServiceImpl" class="com.leslia.service.mapper.impl.MessageServiceImpl"/>
+    <dubbo:service interface="com.leslia.api.api.MessageService" ref="messageServiceImpl" timeout="10000"/>
 
-    <dubbo:service interface="com.leslia.inter.api.MessageService" ref="messageServiceImpl" timeout="10000"/>
+    <bean id="initDemoServiceImpl" class="com.leslia.service.mapper.impl.InitDemoServiceImpl"/>
+    <dubbo:service interface="com.leslia.api.api.InitDemoService" ref="initDemoServiceImpl" timeout="10000"/>
 
-    <dubbo:service interface="com.leslia.inter.api.InitDemoService" ref="initDemoServiceImpl" timeout="10000"/>
+    <bean id="shiroUserServiceImpl" class="com.leslia.service.mapper.impl.ShiroUserServiceImpl"/>
+    <dubbo:service interface="com.leslia.api.api.ShiroUserService" ref="shiroUserServiceImpl" timeout="10000"/>
 
-    <dubbo:service interface="com.leslia.user.api.ShiroUserService" ref="shiroUserServiceImpl" timeout="10000"/>
+    <bean id="numServiceImpl" class="com.leslia.service.mapper.impl.NumServiceImpl"/>
+    <dubbo:service interface="com.leslia.api.api.NumService" ref="numServiceImpl" timeout="10000"/>
 
-    <dubbo:service interface="com.leslia.inter.api.NumService" ref="numServiceImpl" timeout="10000"/>
+    <bean id="helpCategoryServiceImpl" class="com.leslia.service.mapper.impl.HelpCategoryServiceImpl"/>
+    <dubbo:service interface="com.leslia.api.api.HelpCategoryService" ref="helpCategoryServiceImpl" timeout="10000"/>
 
-    <dubbo:service interface="com.leslia.inter.api.HelpCategoryService" ref="helpCategoryServiceImpl" timeout="10000"/>
+    <bean id="orderServiceImpl" class="com.leslia.service.mapper.impl.OrderServiceImpl"/>
+    <dubbo:service interface="com.leslia.api.api.OrderService" ref="orderServiceImpl" timeout="10000"/>
+
+    <bean id="orderCopyServiceImpl" class="com.leslia.service.mapper.impl.OrderCopyServiceImpl"/>
+    <dubbo:service interface="com.leslia.api.api.OrderCopyService" ref="orderCopyServiceImpl" timeout="10000"/>
     
 
 </beans>

@@ -1,7 +1,7 @@
 package com.leslia.test.inter;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.leslia.inter.api.MessageService;
+import com.leslia.api.api.MessageService;
 import com.leslia.test.base.BaseTestDubbo;
 import org.junit.Test;
 

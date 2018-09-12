@@ -6,5 +6,11 @@
 </head>
 <body>
 Welcome Hello World !
+
+<script>
+var socket=new WebSocket("");
+console.log(socket.readyState);
+console.log(socket.bufferedAmount);
+</script>
 </body>
 </html>

@@ -37,7 +37,7 @@
         <!--配置mybatis全局配置文件:mybatis-config.xml-->
         <property name="configLocation" value="classpath:conf/mybatis-config.xml"/>
         <!--扫描sql配置文件:mapper需要的xml文件-->
-        <property name="mapperLocations" value="classpath:/com/leslia/*/mapper/*.xml"/>
+        <property name="mapperLocations" value="classpath:/com/leslia/service/mapper/*.xml"/>
     </bean>
 
     <!--4、配置扫描Dao接口包,动态实现DAO接口,注入到spring容器-->
@@ -45,7 +45,7 @@
         <!--注入SqlSessionFactory-->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
         <!-- 给出需要扫描的Dao接口-->
-        <property name="basePackage" value="com.leslia.*.mapper"/>
+        <property name="basePackage" value="com.leslia.service.mapper"/>
     </bean>
 
     <!--配置事务管理器(mybatis采用的是JDBC的事务管理器)-->

@@ -20,14 +20,14 @@
     </bean>
 
 
-    <bean id="queueListener" class="com.leslia.mq.listener.QueueListener"></bean>
+    <bean id="queueListener" class="com.leslia.service.mq.listener.QueueListener"></bean>
 
     <!-- 定义Queue监听器 -->
     <jms:listener-container destination-type="queue" container-type="default" connection-factory="connectionFactory" acknowledge="auto">
         <jms:listener destination="service.queue" ref="queueListener"></jms:listener>
     </jms:listener-container>
 
-    <bean id="topicListener" class="com.leslia.mq.listener.TopicListener"></bean>
+    <bean id="topicListener" class="com.leslia.service.mq.listener.TopicListener"></bean>
 
     <!-- 定义Topic监听器 -->
     <jms:listener-container destination-type="topic" container-type="default" connection-factory="connectionFactory" acknowledge="auto">

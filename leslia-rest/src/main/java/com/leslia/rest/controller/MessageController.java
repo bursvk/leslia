@@ -1,9 +1,9 @@
 package com.leslia.rest.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.leslia.mq.QueueSender;
-import com.leslia.mq.TopicSender;
-import com.leslia.inter.api.MessageService;
+import com.leslia.ware.mq.QueueSender;
+import com.leslia.ware.mq.TopicSender;
+import com.leslia.api.api.MessageService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;

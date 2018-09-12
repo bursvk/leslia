@@ -50,5 +50,16 @@ public class ViewController {
         return "unauthorized";
     }
 
+    @RequestMapping("/webSocket")
+    public String webSocket(){
+        return "webSocket";
+    }
+
+    @RequestMapping("/socketIo")
+    public String socketIo(){
+        return "socketIo";
+    }
+
+
 
 }

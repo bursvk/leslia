@@ -8,12 +8,11 @@
       http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
 
-    <context:component-scan base-package="com.leslia.*.service.impl"/>
-    <context:component-scan base-package="com.leslia.mq.listener"/>
-
+    <context:component-scan base-package="com.leslia.service.mapper.impl"/>
+    <context:component-scan base-package="com.leslia.service.mq.listener"/>
 
     <!-- 配置进行解密  -->
-    <bean id="propertyConfigurer" class="com.leslia.plugin.Encrypt">
+    <bean id="propertyConfigurer" class="com.leslia.util.base.Encrypt">
         <property name="locations">
             <list>
                 <value>classpath:conf/jdbc.properties</value>
@@ -22,6 +21,5 @@
         </property>
     </bean>
 
-   <!-- <context:property-placeholder location="conf/redis.properties,conf/jdbc.properties" />-->
 
 </beans>

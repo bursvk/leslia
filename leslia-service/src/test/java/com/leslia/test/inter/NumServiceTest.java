@@ -1,8 +1,8 @@
 package com.leslia.test.inter;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.leslia.inter.api.NumService;
-import com.leslia.inter.pojo.Num;
+import com.leslia.api.api.NumService;
+import com.leslia.api.pojo.Num;
 import com.leslia.test.base.BaseTestDubbo;
 import org.junit.Test;
 
@@ -23,9 +23,16 @@ public class NumServiceTest extends BaseTestDubbo{
     }
 
     @Test
+    public void selectNum(){
+        Num num=numService.selectNum(1);
+        System.out.println(num.getNum());
+    }
+
+    @Test
     public void updateNum(){
         Num num=numService.selectNum(1);
-        numService.updateNum(num);
+        num.setNum(num.getNum()-1);
+        numService.updateNum1(num);
     }
 
 

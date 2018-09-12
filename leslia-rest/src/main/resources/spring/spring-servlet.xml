@@ -8,7 +8,7 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context-4.0.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <context:component-scan base-package="com.leslia"/>
+    <context:component-scan base-package="com.leslia.rest.controller"/>
 
     <mvc:annotation-driven/>
 
@@ -27,7 +27,7 @@
         <property name="maxInactiveIntervalInSeconds" value="1800" />
     </bean>
 
-    <bean id="propertyConfigurer" class="com.leslia.plugin.Encrypt">
+    <bean id="propertyConfigurer" class="com.leslia.util.base.Encrypt">
         <property name="locations">
             <list>
                 <value>classpath:conf/redis.properties</value>
@@ -40,6 +40,7 @@
     <import resource="classpath:spring/mq-sender.xml"></import>
     <import resource="classpath:spring/dubbo-consumer.xml"></import>
     <import resource="classpath:spring/spring-shiro.xml"></import>
+    <import resource="classpath:spring/websocket.xml"></import>
 
 
 

@@ -9,7 +9,7 @@ public class StartUp {
     private static Logger logger= LoggerFactory.getLogger(StartUp.class);
 
     public static void main(String args[]){
-        new ClassPathXmlApplicationContext(new String[]{"classpath*:spring/*.xml"});
+        new ClassPathXmlApplicationContext(new String[]{"classpath:spring/*.xml"});
       /*  try{
             ClassPathXmlApplicationContext context=new ClassPathXmlApplicationContext(new String[]{"classpath*:spring/*.xml"});
             context.start();
