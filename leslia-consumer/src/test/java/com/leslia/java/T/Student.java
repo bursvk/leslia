@@ -29,4 +29,10 @@ public class Student {
                 ", password='" + password + '\'' +
                 '}';
     }
+
+    protected void username(){
+
+    }
+
+    protected String rename;
 }
