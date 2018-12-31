@@ -12,7 +12,7 @@
 
     <dubbo:registry protocol="zookeeper" address="127.0.0.1:2181"/>
 
-    <dubbo:annotation package="com.leslia"/>
+    <dubbo:annotation package="com.leslia.rest"/>
 
 
 </beans>

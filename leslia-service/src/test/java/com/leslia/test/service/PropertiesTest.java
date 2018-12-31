@@ -1,4 +1,4 @@
-package com.leslia.test.inter;
+package com.leslia.test.service;
 
 
 import org.junit.Test;

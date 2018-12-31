@@ -1,4 +1,4 @@
-package com.leslia.test.inter;
+package com.leslia.test.service;
 
 import com.leslia.test.base.BaseTestLocal;
 import com.leslia.service.mapper.BookMapper;

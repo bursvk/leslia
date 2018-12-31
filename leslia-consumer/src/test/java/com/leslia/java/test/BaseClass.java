@@ -1,9 +1,10 @@
 package com.leslia.java.test;
 
+import com.leslia.java.T.Student;
 import com.leslia.util.exception.BaseException;
 import org.junit.Test;
 
-public class BaseClass {
+public class BaseClass extends Student{
 
     @Test
     public  void a() throws Exception{
@@ -27,6 +28,9 @@ public class BaseClass {
         baseClass1.a();
     }
 
-
-
+    @Override
+    public void username() {
+        super.username();
+    }
+    
 }

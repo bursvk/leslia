@@ -3,6 +3,7 @@ package com.leslia.service.mq.listener;
 import com.leslia.ware.redis.RedisUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import javax.annotation.Resource;
@@ -24,17 +25,16 @@ public class TopicListener implements MessageListener {
 
     @Override
     public void onMessage(Message message) {
-
         threadPoolTaskExecutor.execute(new Runnable() {
             @Override
             public void run() {
                 try {
-                    if(message instanceof TextMessage){
+                    if (message instanceof TextMessage) {
                         TextMessage textMessage = (TextMessage) message;
-                        logger.info("主题名称：{}  监听消息：{}","service.topic",textMessage.getText());
-                        redisUtil.hset("topic","service.topic",textMessage.getText());
+                        logger.info("主题名称：{}  监听消息：{}", textMessage.getJMSDestination(), textMessage.getText());
+                        redisUtil.hset("topic", textMessage.getJMSDestination().toString(), textMessage.getText());
                     }
-                }catch (JMSException e){
+                } catch (JMSException e) {
                     e.printStackTrace();
                 }
             }

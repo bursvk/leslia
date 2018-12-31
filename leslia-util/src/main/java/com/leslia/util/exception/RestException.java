@@ -17,7 +17,7 @@ public class RestException {
     @ExceptionHandler
     @ResponseBody
     public Result RestException(Exception ex){
-        logger.info("全局异常捕获");
+        logger.error("全局异常捕获");
         LogException.logger(logger,ex);
         Result result;
         if(ex instanceof BaseException){

@@ -11,7 +11,7 @@ public enum EnumCode {
 
     private String message;
 
-    private EnumCode(Integer code, String message){
+    EnumCode(Integer code, String message){
         this.code=code;
         this.message=message;
     }

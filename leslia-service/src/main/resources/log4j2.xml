@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration status="WARN"  monitorInterval="30">
 	<properties>
-		<property name="LOG_HOME">/app/logs</property>
+		<property name="LOG_HOME">/Volumes/starfire/apparea/logs/</property>
 		<!-- 日志备份目录 -->
 		<property name="SERVER_NAME">${project.artifactId}</property>
 	</properties>

@@ -1,4 +1,4 @@
-package com.leslia.test.inter;
+package com.leslia.test.service;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.github.pagehelper.PageInfo;

@@ -24,13 +24,12 @@ public class QueueListener implements MessageListener {
 
     @Override
     public void onMessage(Message message) {
-
         threadPoolTaskExecutor.execute(new Runnable() {
             @Override
             public void run() {
                 try {
-                    logger.info("队列名称：{}  监听消息：{}","service.queue",((TextMessage)message).getText());
-                    redisUtil.hset("queue","service.queue",((TextMessage)message).getText());
+                    logger.info("队列名称：{}  监听消息：{}",message.getJMSDestination(),((TextMessage)message).getText());
+                    redisUtil.hset("queue",message.getJMSDestination().toString(),((TextMessage)message).getText());
                 }catch (JMSException e){
                         e.printStackTrace();
                 }

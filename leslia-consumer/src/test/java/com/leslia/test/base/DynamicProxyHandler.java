@@ -14,18 +14,18 @@ public class DynamicProxyHandler implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        System.out.println("**** proxy: " + proxy.getClass() + ",method:" + method + ",args:" + args+"");
+        System.out.println("**** proxy: " + proxy.getClass() + ",method:" + method.getName() + ",args:" + args+"");
+        Thread.sleep(2000);
        /* if (args != null) {
             for (Object arg : args) {
                 System.out.println(" " + arg);
             }
         }*/
        return method.invoke(proxied,args);
-
-
     }
 
 }
+
 
 class SimpleDynamicProxy{
     public static void consumer(Interface face){
@@ -37,15 +37,11 @@ class SimpleDynamicProxy{
         RealObject real=new RealObject();
         consumer(real);
         Interface proxy=(Interface)
-                Proxy.newProxyInstance(Interface.class.getClassLoader(),new Class[]{Interface.class},new DynamicProxyHandler(real));
-        System.out.println("-----------------------");
+                Proxy.newProxyInstance(RealObject.class.getClassLoader(),
+                        RealObject.class.getInterfaces(),new DynamicProxyHandler(real));
+        System.out.println("----------------------------------------------------------------------------------");
         consumer(proxy);
     }
-}
-
-
-
-interface aa{
 
 }
 
