@@ -23,4 +23,10 @@ public class TwoTuple<A,B> {
         Student student=new Student();
     }
 
+    Student student=new Student();
+
+    public void test(){
+        student.username();
+    }
+
 }
