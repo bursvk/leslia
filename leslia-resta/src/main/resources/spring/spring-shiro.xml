@@ -27,8 +27,7 @@
                 /shiro-cas = casFilter
                 /logout = logoutFilter
                 /view/admin = roles[admin]
-                /view/* = user
-                /** = anon
+                /view/user = user
             </value>
           </property>
       </bean>
@@ -44,7 +43,7 @@
           <property name="redirectUrl" value="${shiro.cas.logoutUrl}"/>
       </bean>
 
-      <bean id="casRealm" class="com.leslia.resta.realm.MyCasRealm">
+      <bean id="casRealm" class="com.leslia.resta.shiro.CasRealm">
           <!-- 认证通过后的默认角色 -->
           <property name="defaultRoles" value="ROLE_USER" />
           <!-- cas服务端地址前缀 -->
@@ -66,6 +65,7 @@
         <!-- 注册配置文件的路径 -->
         <property name="cacheManagerConfigFile" value="classpath:ehcache.xml"/>
     </bean>
+
 
       <bean id="casSubjectFactory" class="org.apache.shiro.cas.CasSubjectFactory"></bean>
 

@@ -1,5 +1,10 @@
 package com.leslia.resta.controller;
 
+import com.leslia.util.http.SessionUtil;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.session.Session;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -13,32 +18,88 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/session")
 public class SessionController {
 
+    private static Logger logger= LoggerFactory.getLogger(SessionController.class);
+
+
+    @RequestMapping("/index")
+    @ResponseBody
+    public void index(HttpServletRequest request,HttpServletResponse response){
+        HttpSession session=request.getSession();
+        logger.info("sessionId:{}",session.getId());
+        Session session1= SecurityUtils.getSubject().getSession();
+        logger.info("sessionId1:{}",session1.getId());
+        session.setAttribute("username","username");
+        session.setAttribute("password","123456");
+    }
+
     @RequestMapping("/view")
     @ResponseBody
-    public String view(HttpServletRequest request){
-        Cookie[] cookies=request.getCookies();
-        for(Cookie cookie:cookies){
-            String cookidName=cookie.getName();
-            if(cookidName.equals("JSESSIONID")){
-                String sessionId=cookie.getValue();
-                System.out.println("JSESSIONID:"+sessionId);
-            }
-        }
-
+    public void view(HttpServletRequest request){
         HttpSession session=request.getSession();
-        String sessionId=session.getId();
-        System.out.println("sessionId:"+sessionId);
-        return sessionId;
+        logger.info("sessionId:{}",session.getId());
+        String username=(String) session.getAttribute("username");
+        String password=(String) session.getAttribute("password");
+        logger.info("username:{},password:{}",username,password);
+        session=SessionUtil.get(session.getId());
+        String username1=(String) session.getAttribute("username");
+        String password1=(String) session.getAttribute("password");
+        logger.info("username1:{},password1:{}",username1,password1);
     }
+
+    @RequestMapping("/delete")
+    @ResponseBody
+    public void delete(HttpServletRequest request){ ;
+        HttpSession session=request.getSession();
+        session.invalidate();
+    }
+
+
+    @RequestMapping("/remove")
+    @ResponseBody
+    public void search(HttpServletRequest request){
+        HttpSession session=request.getSession();
+        logger.info("sessionId:{}",session.getId());
+        SessionUtil.remove(session.getId());
+        String username=(String) session.getAttribute("username");
+        String password=(String) session.getAttribute("password");
+        logger.info("username:{},password:{}",username,password);
+    }
+
+
+
+
+
+
 
     @RequestMapping("/cookie")
     @ResponseBody
     public void cookie(HttpServletResponse response){
-        Cookie cookie1=new Cookie("username","leslia");
+        Cookie cookie1=new Cookie("username", "leslia");
         Cookie cookie2=new Cookie("password","123456");
+        //cookie1.setDomain("www.baidu.com");
+        //cookie1.setPath("/view/");
+        //cookie1.setMaxAge(0);
+        //cookie1.setSecure(true);
         response.addCookie(cookie1);
         response.addCookie(cookie2);
     }
+
+    @RequestMapping("/getCookie")
+    @ResponseBody
+    public void getCookie(HttpServletRequest request,HttpServletResponse response){
+        Cookie[] cookies=request.getCookies();
+        if(cookies!=null) {
+            for (Cookie cookie : cookies) {
+                System.out.println(cookie.getMaxAge());
+                System.out.println(cookie.getDomain());
+                System.out.println(cookie.getName() + "  " + cookie.getValue());
+                cookie.setMaxAge(0);
+                response.addCookie(cookie);
+            }
+        }
+    }
+
+
 
 
 

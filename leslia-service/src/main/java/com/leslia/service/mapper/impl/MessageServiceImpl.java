@@ -1,8 +1,8 @@
 package com.leslia.service.mapper.impl;
 
 import com.leslia.api.api.MessageService;
-import com.leslia.ware.mq.QueueSender;
-import com.leslia.ware.mq.TopicSender;
+import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.jms.core.JmsTemplate;
 
 import javax.annotation.Resource;
 
@@ -10,19 +10,39 @@ import javax.annotation.Resource;
 public class MessageServiceImpl implements MessageService {
 
     @Resource
-    private QueueSender queueSender;
+    private JmsTemplate jmsQueueTemplate;
     @Resource
-    private TopicSender topicSender;
+    private JmsTemplate jmsTopicTemplate;
+    @Resource
+    private AmqpTemplate amqpTemplate;
+
 
     @Override
     public void sendQueue() {
-        queueSender.send("service.queue","the module leslia-service test");
+        jmsQueueTemplate.convertAndSend("service.queue","the module leslia-service test");
     }
 
     @Override
     public void sendTopic() {
-        topicSender.send("service.topic","the module leslia-service test");
+        jmsTopicTemplate.convertAndSend("service.topic","the module leslia-service test");
     }
+
+    @Override
+    public void fanout() {
+        amqpTemplate.convertAndSend("exchange.fanout","","hello world");
+    }
+
+    @Override
+    public void direct() {
+        amqpTemplate.convertAndSend("exchange.direct","direct","hello world");
+    }
+
+    @Override
+    public void topic() {
+        amqpTemplate.convertAndSend("exchange.topic","more.topic","hello world");
+    }
+
+
 
 
 }

@@ -10,13 +10,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"classpath:spring/redis.xml"})
+@ContextConfiguration({"classpath:spring/redis.xml","classpath:spring/application.xml"})
 public class RedisTest {
 
     @Resource
@@ -29,6 +26,11 @@ public class RedisTest {
         student.setName("suli");
         student.setAge("19");
         redisUtil.hset("springHash","key2",student);
+        Set<String> set=new HashSet<>();
+        set.add("url1");
+        set.add("url2");
+        set.add("url3");
+        redisUtil.hset("springHash","key3",set);
     }
 
     @Test
@@ -64,10 +66,20 @@ public class RedisTest {
       redisUtil.lSet("sList",list);
     }
 
+    @Test
+    public void test5(){
+        String ticket="/bUwkuGKcc7k7Y48WTpSBQ==";
+        Object ObjectUrls=redisUtil.hget(RedisKey.SSO_TICKET_URL,ticket);
+        Set<String> set=ObjectUrls==null?new HashSet<>():(HashSet<String>)ObjectUrls;
+        System.out.println(set);
+    }
+
+
+
 
     @Test
-    public void incr(){
-       long userId= redisUtil.incr(RedisKey.userId,1);
+    public void inc(){
+       long userId= redisUtil.incr(RedisKey.USER_ID,1);
        System.out.println(userId);
     }
 

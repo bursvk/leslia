@@ -5,18 +5,14 @@
          version="3.0">
 
 
- <!-- <listener>
-    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-  </listener>
--->
- <!-- <context-param>
-    <param-name>contextConfigLocation</param-name>
-    <param-value>classpath:spring-servlet.xml</param-value>
-  </context-param>-->
-    <listener>
-        <listener-class>com.leslia.rest.listener.SocketIoListener</listener-class>
-    </listener>
+   <!-- <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:spring/spring-servlet.xml</param-value>
+    </context-param>
 
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>-->
 
     <servlet>
         <servlet-name>spring</servlet-name>
@@ -32,6 +28,25 @@
         <servlet-name>spring</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+    
+    <listener>
+        <listener-class>com.leslia.rest.listener.SessionListener</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>com.leslia.rest.listener.SocketIoListener</listener-class>
+    </listener>
+
+
+<!--    <filter>
+        <filter-name>ssoLogoutFilter</filter-name>
+        <filter-class>com.leslia.sso.client.filter.LogoutFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ssoLogoutFilter</filter-name>
+        <url-pattern>/logout</url-pattern>
+    </filter-mapping>-->
+
 
     <listener>
         <listener-class>org.jasig.cas.client.session.SingleSignOutHttpSessionListener</listener-class>
@@ -49,7 +64,6 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <!-- shiro 安全过滤器 -->
     <filter>
         <filter-name>shiroFilter</filter-name>
         <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -63,6 +77,29 @@
         <filter-name>shiroFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+
+    <filter>
+        <filter-name>springSessionRepositoryFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>springSessionRepositoryFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <listener>
+        <listener-class>com.leslia.sso.client.listener.SessionListener</listener-class>
+    </listener>
+    <filter>
+        <filter-name>ssoLoginFilter</filter-name>
+        <filter-class>com.leslia.sso.client.filter.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ssoLoginFilter</filter-name>
+        <url-pattern>/view/user</url-pattern>
+    </filter-mapping>
+
+
 
 
 

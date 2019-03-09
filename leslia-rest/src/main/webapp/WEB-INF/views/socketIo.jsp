@@ -21,8 +21,7 @@
     var socket = io.connect('localhost:9092');
     socket.on('connect_msg',function(data){
         alert(data);
-        var personInfo = JSON.parse(data);
-        console.log(personInfo);
+        console.log(data);
     });
 
 </script>

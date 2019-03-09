@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/rabbit
+       http://www.springframework.org/schema/rabbit/spring-rabbit.xsd
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+    <rabbit:connection-factory id="rmqConnectionFactory" host="localhost" port="5672" username="guest" password="guest"/>
+
+    <rabbit:admin connection-factory="rmqConnectionFactory"/>
+
+    <rabbit:template id="rabbitTemplate" connection-factory="rmqConnectionFactory"/>
+
+    <rabbit:queue name="queues"/>
+    <rabbit:queue name="queueMap"/>
+    <rabbit:queue name="queueUser"/>
+
+    <bean id="spittleAlertHandler" class="com.leslia.service.mq.handler.RabbitQueueHandler" />
+
+    <rabbit:listener-container connection-factory="rmqConnectionFactory" acknowledge="auto">
+        <rabbit:listener queue-names="queues" ref="spittleAlertHandler" method="handlers"/>
+        <rabbit:listener queue-names="queueMap" ref="spittleAlertHandler" method="handlerMap"/>
+        <rabbit:listener queue-names="queueUser" ref="spittleAlertHandler" method="handlerUser"/>
+    </rabbit:listener-container>
+
+
+
+    <rabbit:fanout-exchange name="exchange.fanout">
+        <rabbit:bindings>
+            <rabbit:binding queue="queues"/>
+        </rabbit:bindings>
+    </rabbit:fanout-exchange>
+
+    <rabbit:direct-exchange name="exchange.direct">
+        <rabbit:bindings>
+            <rabbit:binding queue="queueMap" key="direct"></rabbit:binding>
+        </rabbit:bindings>
+    </rabbit:direct-exchange>
+
+    <rabbit:topic-exchange name="exchange.topic">
+        <rabbit:bindings>
+            <rabbit:binding queue="queueUser" pattern="#.topic"></rabbit:binding>
+        </rabbit:bindings>
+    </rabbit:topic-exchange>
+
+
+
+
+</beans>

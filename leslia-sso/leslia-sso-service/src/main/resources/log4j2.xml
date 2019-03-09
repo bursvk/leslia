@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration status="WARN"  monitorInterval="30">
 	<properties>
-		<property name="LOG_HOME">/app/logs</property>
+		<property name="LOG_HOME">/Volumes/starfire/apparea/logs/leslia</property>
 		<!-- 日志备份目录 -->
 		<property name="SERVER_NAME">${project.artifactId}</property>
 	</properties>
@@ -50,6 +50,7 @@
 		<logger name="org.apache.zookeeper" level="warn" />
 		<logger name="org.springframework.web" level="debug" />-->
 		<logger name="org.apache.shiro" level="debug"/>
+		<logger name="redis.clients.jedis" level="debug"/>
 		<!--<Logger name="top.ibase4j" level="info">
 			<AppenderRef ref="ProductLog" />
 		</Logger>

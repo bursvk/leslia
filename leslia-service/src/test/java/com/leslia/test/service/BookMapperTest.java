@@ -1,6 +1,6 @@
 package com.leslia.test.service;
 
-import com.leslia.test.base.BaseTestLocal;
+import com.leslia.ware.base.BaseTestLocal;
 import com.leslia.service.mapper.BookMapper;
 import com.leslia.api.pojo.Book;
 import org.junit.Test;

@@ -8,24 +8,13 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context-4.0.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <context:component-scan base-package="com.leslia"/>
+    <context:component-scan base-package="com.leslia.sso.service"/>
+    <context:component-scan base-package="com.leslia.util.exception"/>
 
     <!-- 视图页面配置 -->
     <bean id="viewResolver"  class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/" />
         <property name="suffix" value=".jsp" />
     </bean>
-
-
-    <bean id="propertyConfigurer" class="com.leslia.util.base.Encrypt">
-        <property name="locations">
-            <list>
-                <value>classpath:conf/redis.properties</value>
-            </list>
-        </property>
-    </bean>
-
-    <import resource="classpath:spring/redis.xml"></import>
-
 
 </beans>

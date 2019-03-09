@@ -7,10 +7,10 @@
 <body>
 Welcome Hello World !
 
-<script>
+<%--<script>
 var socket=new WebSocket("");
 console.log(socket.readyState);
 console.log(socket.bufferedAmount);
-</script>
+</script>--%>
 </body>
 </html>

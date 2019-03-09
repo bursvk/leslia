@@ -3,7 +3,6 @@ package com.leslia.rest.controller;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
-import org.jasig.cas.client.util.AssertionHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -23,8 +22,6 @@ public class ViewController {
         logger.info("sessionId"+session.getId());
         String username=request.getRemoteUser();
         logger.info("username:"+username);
-        String username1= AssertionHolder.getAssertion().getPrincipal().getName();
-        logger.info("username1:"+username1);
         return "index";
     }
 

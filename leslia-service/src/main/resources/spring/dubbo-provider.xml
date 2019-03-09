@@ -40,6 +40,9 @@
 
     <bean id="orderCopyServiceImpl" class="com.leslia.service.mapper.impl.OrderCopyServiceImpl"/>
     <dubbo:service interface="com.leslia.api.api.OrderCopyService" ref="orderCopyServiceImpl" timeout="10000"/>
+
+    <bean id="userServiceImpl" class="com.leslia.service.mapper.impl.UserServiceImpl"/>
+    <dubbo:service interface="com.leslia.api.api.UserService" ref="userServiceImpl" timeout="10000"/>
     
 
 </beans>

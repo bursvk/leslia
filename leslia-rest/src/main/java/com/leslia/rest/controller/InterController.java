@@ -108,13 +108,8 @@ public class InterController{
     @ResponseBody
     public String hello(@RequestParam String name){
         logger.info("name:{}",name);
-        String backName="";
-        try{
-            backName=initDemoService.helloWorld(name);
-            logger.info("backName:{}",backName);
-        }catch (Exception e){
-            logger.error("this witch dubbo service error",e);
-        }
+        String backName=initDemoService.helloWorld(name);
+        logger.info("backName:{}",backName);
         return backName;
     }
 

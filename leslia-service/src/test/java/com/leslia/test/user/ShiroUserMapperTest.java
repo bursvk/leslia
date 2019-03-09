@@ -1,6 +1,6 @@
 package com.leslia.test.user;
 
-import com.leslia.test.base.BaseTestLocal;
+import com.leslia.ware.base.BaseTestLocal;
 import com.leslia.service.mapper.ShiroUserMapper;
 import com.leslia.api.pojo.ShiroUser;
 import org.junit.Test;

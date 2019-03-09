@@ -1,9 +1,8 @@
 package com.leslia.rest.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.leslia.ware.mq.QueueSender;
-import com.leslia.ware.mq.TopicSender;
 import com.leslia.api.api.MessageService;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,10 +18,10 @@ public class MessageController{
     private MessageService messageService;
 
     @Resource
-    private QueueSender queueSender;
+    private JmsTemplate jmsQueueTemplate;
 
     @Resource
-    private TopicSender topicSender;
+    private JmsTemplate jmsTopicTemplate;
 
 
     @RequestMapping("/sendQueue")
@@ -37,16 +36,16 @@ public class MessageController{
         messageService.sendTopic();
     }
 
-    @RequestMapping("/sendQueueRest")
+    @RequestMapping("/sendMessage/queue")
     @ResponseBody
     public void sendQueueRest(){
-        queueSender.send("rest.queue","message send in rest");
+        jmsQueueTemplate.convertAndSend("rest.queue","message send in rest");
     }
 
-    @RequestMapping("/sendTopicRest")
+    @RequestMapping("/sendMessage/topic")
     @ResponseBody
     public void sendTopicRest(){
-        topicSender.send("rest.topic","message send in rest ");
+        jmsTopicTemplate.convertAndSend("rest.topic","message send in rest");
     }
 
 

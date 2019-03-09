@@ -23,11 +23,11 @@
         </property>
         <property name="filterChainDefinitions">
             <value>
+                /** = anon
                 /shiro-cas = casFilter
                 /logout = logoutFilter
                 /view/admin = roles[admin]
                 /view/user = user
-                /** = anon
             </value>
           </property>
       </bean>
@@ -43,6 +43,15 @@
           <property name="redirectUrl" value="${shiro.cas.logoutUrl}"/>
       </bean>
 
+
+    <!-- Shiro's main business-tier object for web-enabled applications -->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="subjectFactory" ref="casSubjectFactory"></property>
+        <property name="realm" ref="casRealm" />
+        <!-- 在安全管理器中注入缓存管理器 -->
+        <property name="cacheManager" ref="cacheManager"></property>
+    </bean>
+
       <bean id="casRealm" class="com.leslia.rest.realm.MyCasRealm">
           <!-- 认证通过后的默认角色 -->
           <property name="defaultRoles" value="ROLE_USER" />
@@ -51,15 +60,6 @@
           <!-- 应用服务地址，用来接收cas服务端票据 -->
           <property name="casService" value="${shiro.cas.client.url}" />
       </bean>
-
-      <!-- Shiro's main business-tier object for web-enabled applications -->
-      <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
-          <property name="subjectFactory" ref="casSubjectFactory"></property>
-          <property name="realm" ref="casRealm" />
-          <!-- 在安全管理器中注入缓存管理器 -->
-          <property name="cacheManager" ref="cacheManager"></property>
-      </bean>
-
 
     <!-- 注册ehcache缓存管理器 -->
     <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">

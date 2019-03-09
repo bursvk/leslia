@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jms="http://www.springframework.org/schema/jms"
+       xmlns:amq="http://activemq.apache.org/schema/core"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/jms
+      http://www.springframework.org/schema/jms/spring-jms-4.0.xsd
+      http://activemq.apache.org/schema/core
+      http://activemq.apache.org/schema/core/activemq-core-5.8.0.xsd">
+
+    <!--JMS服务厂商 ActiveMQ-->
+    <amq:connectionFactory id="amqConnectionFactory" brokerURL="tcp://127.0.0.1:61616"/>
+
+    <!--JMS链接工厂-->
+    <bean id="connectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
+        <property name="targetConnectionFactory" ref="amqConnectionFactory"/>
+        <property name="sessionCacheSize" value="10" />
+    </bean>
+
+    <!--JmsTemplate 消息发送者-->
+    <!--Queue类型 队列模式-->
+    <bean id="jmsQueueTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <constructor-arg ref="connectionFactory"/>
+        <property name="pubSubDomain" value="false"/>
+    </bean>
+    <!--Topic类型 发布/订阅模式-->
+    <bean id="jmsTopicTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <constructor-arg ref="connectionFactory"/>
+        <property name="pubSubDomain" value="true"/>
+    </bean>
+
+
+    <bean id="queueHandler" class="com.leslia.service.mq.handler.ActiveQueueHandler"></bean>
+
+    <!-- 定义Queue监听器 -->
+    <jms:listener-container destination-type="queue" container-type="default" connection-factory="connectionFactory" acknowledge="auto">
+        <jms:listener destination="service.queue" ref="queueHandler" method="handlers"/>
+        <jms:listener destination="rest.queue" ref="queueHandler" method="handlers"/>
+        <jms:listener destination="service.queue.map" ref="queueHandler" method="handlerMap"/>
+    </jms:listener-container>
+
+    <!-- 定义Topic监听器 -->
+    <jms:listener-container destination-type="topic" container-type="default" connection-factory="connectionFactory" acknowledge="auto">
+        <jms:listener destination="service.topic" ref="queueHandler" method="handlers"/>
+        <jms:listener destination="service.topic" ref="queueHandler" method="handlers"/>
+        <jms:listener destination="rest.topic" ref="queueHandler" method="handlers"/>
+    </jms:listener-container>
+
+
+
+</beans>

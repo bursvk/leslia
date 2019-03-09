@@ -11,9 +11,11 @@ public class SocketController {
 
     @ResponseBody
     @RequestMapping("/pushMessage")
-    public void pushMessage(){
+    public void pushMessage() throws InterruptedException{
         SocketIoServer socketIoServer=new SocketIoServer();
         socketIoServer.pushMessage("connect_msg","今天下午2点开会");
+        Thread.sleep(5000);
+        socketIoServer.pushMessage("connect_msg","今天下午3点开会");
     }
 
 }

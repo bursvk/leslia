@@ -1,6 +1,8 @@
 package com.leslia.api.pojo;
 
-public class User {
+import java.util.Date;
+
+public class User implements java.io.Serializable {
 
 
     private long userId;
@@ -8,6 +10,10 @@ public class User {
     private String username;
 
     private String password;
+
+    private String salt;
+
+    private Date createTime;
 
 
 
@@ -35,6 +41,7 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
 
 
 

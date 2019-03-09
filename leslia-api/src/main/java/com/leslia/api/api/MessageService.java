@@ -6,5 +6,11 @@ public interface MessageService {
 
     public void sendTopic();
 
+    public void fanout();
+
+    public void direct();
+
+    public void topic();
+
 
 }

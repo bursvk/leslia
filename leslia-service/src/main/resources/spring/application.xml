@@ -9,10 +9,10 @@
 
 
     <context:component-scan base-package="com.leslia.service.mapper.impl"/>
-    <context:component-scan base-package="com.leslia.service.mq.listener"/>
+    <context:component-scan base-package="com.leslia.service.listener"/>
 
     <!-- 配置进行解密  -->
-    <bean id="propertyConfigurer" class="com.leslia.util.base.Encrypt">
+    <bean id="propertyConfigurer" class="com.leslia.util.crypt.Encrypt">
         <property name="locations">
             <list>
                 <value>classpath:conf/jdbc.properties</value>

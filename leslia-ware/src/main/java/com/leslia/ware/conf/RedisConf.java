@@ -1,6 +1,7 @@
 package com.leslia.ware.conf;
 
-import com.leslia.util.base.AESUtil;
+import com.leslia.util.crypt.AESKey;
+import com.leslia.util.crypt.AESUtil;
 
 import java.util.ResourceBundle;
 
@@ -43,7 +44,7 @@ public class RedisConf {
         port=Integer.parseInt(resourceBundle.getString("redis.port"));
         timeout=Integer.parseInt(resourceBundle.getString("redis.timeout"));
         password=resourceBundle.getString("redis.password");
-        password= AESUtil.aesDecode(password);
+        password= AESUtil.aesDecode(AESKey.CONFIG_FILE,password);
         maxTotal=Integer.parseInt(resourceBundle.getString("redis.maxTotal"));
         maxIdle=Integer.parseInt(resourceBundle.getString("redis.maxIdle"));
         maxWaitMillis=Long.parseLong(resourceBundle.getString("redis.maxWaitMillis"));
@@ -115,4 +116,5 @@ public class RedisConf {
     public static void setTestOnBorrow(boolean testOnBorrow) {
         RedisConf.testOnBorrow = testOnBorrow;
     }
+
 }

@@ -28,7 +28,7 @@
         <property name="maxInactiveIntervalInSeconds" value="1800" />
     </bean>
 
-    <bean id="propertyConfigurer" class="com.leslia.util.base.Encrypt">
+    <bean id="propertyConfigurer" class="com.leslia.util.crypt.Encrypt">
         <property name="locations">
             <list>
                 <value>classpath:conf/redis.properties</value>
@@ -38,7 +38,7 @@
     </bean>
 
     <import resource="classpath:spring/redis.xml"></import>
-    <import resource="classpath:spring/mq-sender.xml"></import>
+    <import resource="classpath:spring/activemq.xml"></import>
     <import resource="classpath:spring/dubbo-consumer.xml"></import>
     <import resource="classpath:spring/spring-shiro.xml"></import>
     <import resource="classpath:spring/websocket.xml"></import>

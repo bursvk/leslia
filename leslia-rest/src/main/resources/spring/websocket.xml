@@ -8,9 +8,10 @@
         http://www.springframework.org/schema/websocket/spring-websocket.xsd">
 
     <websocket:handlers>
-        <websocket:mapping path="/echo" handler="myWebSocketHandler"/>
+        <websocket:mapping path="/webSocket" handler="webSocketHandler"/>
+        <websocket:sockjs/>
     </websocket:handlers>
 
-    <bean id="myWebSocketHandler" class="com.leslia.rest.websocket.MyWebSocketHandler"/>
+    <bean id="webSocketHandler" class="com.leslia.rest.websocket.WebSocketHandler"/>
 
 </beans>

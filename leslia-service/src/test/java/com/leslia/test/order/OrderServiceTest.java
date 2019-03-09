@@ -3,7 +3,7 @@ package com.leslia.test.order;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.leslia.api.api.OrderService;
 import com.leslia.api.pojo.Order;
-import com.leslia.test.base.BaseTestDubbo;
+import com.leslia.ware.base.BaseTestDubbo;
 import org.junit.Test;
 
 import java.util.ArrayList;

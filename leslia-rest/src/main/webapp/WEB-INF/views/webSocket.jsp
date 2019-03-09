@@ -1,26 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <body>
 <h2>Hello World!</h2>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script>
-    var webSocket=new WebSocket("ws://localhost:8081/echo");
+    var sock = new SockJS('http://localhost:8081/webSocket');
+    sock.onopen = function() {
+        console.log('open');
+        sock.send('客户端发送消息');
+    };
 
-    webSocket.onopen= function (ev) {
-        webSocket.send("客户端发送数据");
-    }
+    sock.onmessage = function(e) {
+        console.log('message', e.data);
+        sock.close();
+    };
 
-    webSocket.onmessage= function (ev) {
-        alert(ev.data);
-    }
+    sock.onclose = function() {
+        console.log('close');
+    };
 
-    webSocket.onclose=function (ev) {
-    }
-
-    webSocket.onerror=function (ev) {
-
-    }
 
 </script>
 </html>

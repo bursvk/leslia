@@ -1,6 +1,6 @@
 package com.leslia.ware.redis;
 
-import com.leslia.test.base.BaseTestLocal;
+import com.leslia.ware.base.BaseTestLocal;
 import org.junit.Test;
 import org.springframework.data.redis.core.RedisTemplate;
 

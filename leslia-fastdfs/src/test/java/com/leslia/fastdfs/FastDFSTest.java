@@ -4,8 +4,6 @@ import org.apache.commons.io.IOUtils;
 import org.csource.common.MyException;
 import org.csource.common.NameValuePair;
 import org.csource.fastdfs.*;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.io.FileNotFoundException;
@@ -15,42 +13,21 @@ import java.util.UUID;
 
 public class FastDFSTest {
 
-
-    public String conf_filename = "fdfs_client.conf";
-    //public String local_filename = "D:\\stsworkspace\\fastdfs-demo\\src\\main\\resources\\fdfs_client.conf";
-
-    public String local_filename = "D:\\data\\images\\b_girl2.jpg";
-
-    @Before
-    public void setUp() throws Exception {
-    }
-
-    @After
-    public void tearDown() throws Exception {
-    }
+    private String local_filename = "/Volumes/haslove/images/s_bibe1.jpg";
 
     @Test
     public void testUpload() {
-
         try {
-
-            ClientGlobal.init(conf_filename);
-
-            TrackerClient tracker = new TrackerClient();
-            TrackerServer trackerServer = tracker.getConnection();
-            StorageServer storageServer = null;
-
-            StorageClient storageClient = new StorageClient(trackerServer, storageServer);
-//          NameValuePair nvp = new NameValuePair("age", "18");
+            StorageClient storageClient = FastDFS.storageClient();
             NameValuePair nvp [] = new NameValuePair[]{
                     new NameValuePair("age", "18"),
                     new NameValuePair("sex", "male")
             };
-            String fileIds[] = storageClient.upload_file(local_filename, "jpg", nvp);
-
-            System.out.println(fileIds.length);
-            System.out.println("组名：" + fileIds[0]);
-            System.out.println("路径: " + fileIds[1]);
+            for(int i=0;i<3;i++){
+                String fileIds[] = storageClient.upload_file(local_filename, "png", nvp);
+                System.out.println("组名：" + fileIds[0]);
+                System.out.println("路径: " + fileIds[1]);
+            }
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -64,17 +41,11 @@ public class FastDFSTest {
     @Test
     public void testDownload() {
         try {
-
-            ClientGlobal.init(conf_filename);
-
-            TrackerClient tracker = new TrackerClient();
-            TrackerServer trackerServer = tracker.getConnection();
-            StorageServer storageServer = null;
-
-            StorageClient storageClient = new StorageClient(trackerServer, storageServer);
-            byte[] b = storageClient.download_file("group1", "M00/00/00/wKgRcFV_08OAK_KCAAAA5fm_sy874.conf");
-            System.out.println(b);
-            IOUtils.write(b, new FileOutputStream("D:/"+ UUID.randomUUID().toString()+".conf"));
+            StorageClient storageClient = FastDFS.storageClient();
+            byte[] b = storageClient.download_file("group2", "M00/00/00/wKiZjlxFmk-AJWmgAAKPpiPsna4473.png");
+            String filename=UUID.randomUUID().toString();
+            System.out.println("文件名："+filename);
+            IOUtils.write(b, new FileOutputStream("/Volumes/haslove/images/"+filename+".png"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -83,14 +54,8 @@ public class FastDFSTest {
     @Test
     public void testGetFileInfo(){
         try {
-            ClientGlobal.init(conf_filename);
-
-            TrackerClient tracker = new TrackerClient();
-            TrackerServer trackerServer = tracker.getConnection();
-            StorageServer storageServer = null;
-
-            StorageClient storageClient = new StorageClient(trackerServer, storageServer);
-            FileInfo fi = storageClient.get_file_info("group1", "M00/00/00/wKgRcFV_08OAK_KCAAAA5fm_sy874.conf");
+            StorageClient storageClient = FastDFS.storageClient();
+            FileInfo fi = storageClient.get_file_info("group3", "M00/00/00/wKiZj1xFp3OAXqacAAAJo7BuCew575.png");
             System.out.println(fi.getSourceIpAddr());
             System.out.println(fi.getFileSize());
             System.out.println(fi.getCreateTimestamp());
@@ -103,16 +68,9 @@ public class FastDFSTest {
     @Test
     public void testGetFileMate(){
         try {
-            ClientGlobal.init(conf_filename);
-
-            TrackerClient tracker = new TrackerClient();
-            TrackerServer trackerServer = tracker.getConnection();
-            StorageServer storageServer = null;
-
-            StorageClient storageClient = new StorageClient(trackerServer,
-                    storageServer);
-            NameValuePair nvps [] = storageClient.get_metadata("group1", "M00/00/00/wKgRcFV_08OAK_KCAAAA5fm_sy874.conf");
-            for(NameValuePair nvp : nvps){
+            StorageClient storageClient = FastDFS.storageClient();
+            NameValuePair nvs [] = storageClient.get_metadata("group2", "M00/00/00/wKiZjlxFmk-AJWmgAAKPpiPsna4473.png");
+            for(NameValuePair nvp : nvs){
                 System.out.println(nvp.getName() + ":" + nvp.getValue());
             }
         } catch (Exception e) {
@@ -123,19 +81,16 @@ public class FastDFSTest {
     @Test
     public void testDelete(){
         try {
-            ClientGlobal.init(conf_filename);
-
-            TrackerClient tracker = new TrackerClient();
-            TrackerServer trackerServer = tracker.getConnection();
-            StorageServer storageServer = null;
-
-            StorageClient storageClient = new StorageClient(trackerServer,
-                    storageServer);
-            int i = storageClient.delete_file("group1", "M00/00/00/wKgRcFV_08OAK_KCAAAA5fm_sy874.conf");
+            StorageClient storageClient = FastDFS.storageClient();
+            int i = storageClient.delete_file("group2", "M00/00/00/wKiZjlxFeoqAVHxoAAKPpiPsna4348.png");
             System.out.println( i==0 ? "删除成功" : "删除失败:"+i);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+
+
+
 
 }

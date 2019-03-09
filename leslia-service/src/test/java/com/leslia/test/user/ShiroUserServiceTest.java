@@ -1,7 +1,7 @@
 package com.leslia.test.user;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.leslia.test.base.BaseTestDubbo;
+import com.leslia.ware.base.BaseTestDubbo;
 import com.leslia.api.api.ShiroUserService;
 import com.leslia.api.pojo.ShiroUser;
 import org.junit.Test;

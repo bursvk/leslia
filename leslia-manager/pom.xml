@@ -16,10 +16,10 @@
         <module>../leslia-util</module>
         <module>../leslia-ware</module>
         <module>../leslia-resta</module>
-        <module>../leslia-user</module>
         <module>../leslia-sso</module>
         <module>../leslia-search</module>
         <module>../leslia-fastdfs</module>
+        <module>../leslia-user</module>
     </modules>
 
     <properties>
@@ -43,6 +43,7 @@
         <!--jms-->
         <jms.version>2.0.1</jms.version>
         <activemq.version>5.15.4</activemq.version>
+        <rabbitmq.version>5.5.3</rabbitmq.version>
         <!--mysql-->
         <mysql.version>8.0.13</mysql.version>
         <!--mybatis-->
@@ -53,6 +54,8 @@
         <mybatis-pagehelper.version>5.1.4</mybatis-pagehelper.version>
 
         <commons.lang.version>2.6</commons.lang.version>
+
+        <servlet.api.version>2.4</servlet.api.version>
         <!--shiro-->
         <shiro.version>1.2.1</shiro.version>
         <!--cas单点登录-->

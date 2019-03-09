@@ -20,9 +20,6 @@ public class ViewController {
 
     @RequestMapping("/user")
     public String user(){
-        Session session= SecurityUtils.getSubject().getSession();
-        String username=(String)session.getAttribute("username");
-        logger.info("username:"+username);
         return "user";
     }
 

@@ -12,11 +12,4 @@ public class ViewController{
         return "login";
     }
 
-    @RequestMapping("/logOutRedirect")
-    public String logOutRedirect(){
-        return "logOutRedirect";
-    }
-
-
-
 }

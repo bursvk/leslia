@@ -3,7 +3,7 @@ package com.leslia.test.service;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.leslia.api.api.NumService;
 import com.leslia.api.pojo.Num;
-import com.leslia.test.base.BaseTestDubbo;
+import com.leslia.ware.base.BaseTestDubbo;
 import org.junit.Test;
 
 import java.util.Date;
