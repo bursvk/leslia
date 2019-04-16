@@ -17,12 +17,12 @@ public class BaseTestDubbo {
 
     @Before
     public void before(){
-        logger.info("Dubbo服务测试开始........");
+        logger.info("dubbo服务测试开始........");
     }
 
     @After
     public void end(){
-        logger.info("Dubbo服务测试结束........");
+        logger.info("dubbo服务测试结束........");
     }
 
 
