@@ -8,7 +8,7 @@
       http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
     <!-- 配置进行解密  -->
-    <bean id="propertyConfigurer" class="com.leslia.util.base.Encrypt">
+    <bean id="propertyConfigurer" class="com.leslia.util.crypt.Encrypt">
         <property name="locations">
             <list>
                 <value>classpath:conf/schedule.properties</value>
@@ -16,9 +16,7 @@
         </property>
     </bean>
 
-    <bean id="scheduleManagerFactory"
-          class="com.taobao.pamirs.schedule.strategy.TBScheduleManagerFactory"
-          init-method="init">
+    <bean id="scheduleManagerFactory" class="com.taobao.pamirs.schedule.strategy.TBScheduleManagerFactory" init-method="init">
         <property name="zkConfig">
             <map>
                 <entry key="zkConnectString" value="${schedule.zookeeper.address}" />

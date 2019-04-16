@@ -6,13 +6,13 @@ import org.quartz.JobExecutionException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class MyQuartzJob implements Job {
+public class QuartzJob implements Job {
 
-    private Logger logger= LoggerFactory.getLogger(MyQuartzJob.class);
+    private Logger logger= LoggerFactory.getLogger(QuartzJob.class);
 
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
-        logger.info("定时任务开启...");
+        logger.info("定时任务开启...{}",jobExecutionContext.toString());
     }
 
 }

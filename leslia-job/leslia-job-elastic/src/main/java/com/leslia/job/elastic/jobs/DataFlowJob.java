@@ -8,9 +8,9 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyDataFlowJob implements DataflowJob<String> {
+public class DataFlowJob implements DataflowJob<String> {
 
-    private Logger logger= LoggerFactory.getLogger(MyDataFlowJob.class);
+    private Logger logger= LoggerFactory.getLogger(DataFlowJob.class);
 
     private int num=1;
 

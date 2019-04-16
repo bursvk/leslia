@@ -17,8 +17,8 @@ public class BookMapperTest extends BaseTestLocal{
     @Test
     public void insertBook(){
         Book book=new Book();
-        book.setBookName("1");
-        book.setAuthor("1");
+        book.setBookName("巴黎圣母院");
+        book.setAuthor("维克多·雨果");
         book.setCreateTime(new Date());
         bookMapper.insertBook(book);
     }

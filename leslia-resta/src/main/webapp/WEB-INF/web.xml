@@ -28,7 +28,22 @@
         <servlet-name>spring</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
-    
+
+    <servlet>
+        <servlet-name>LoadOnStartupServlet</servlet-name>
+        <servlet-class>org.jcrontab.web.loadCrontabServlet</servlet-class>
+        <init-param>
+            <param-name>PROPERTIES_FILE</param-name>
+            <param-value>/Volumes/starfire/apparea/leslia/leslia-resta/src/main/resources/conf/jcrontab.properties</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <!-- Mapping of the StartUp Servlet -->
+    <servlet-mapping>
+        <servlet-name>LoadOnStartupServlet</servlet-name>
+        <url-pattern>/Startup</url-pattern>
+    </servlet-mapping>
+
     <listener>
         <listener-class>com.leslia.resta.listener.SessionListener</listener-class>
     </listener>

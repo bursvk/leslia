@@ -1,0 +1,3 @@
+#* * * * * com.leslia.resta.jcrontab.JCronTabTask#task1
+* * * * * com.leslia.resta.jcrontab.JCronTabTask
+* * * * * com.leslia.resta.jcrontab.JCronTabTask#run param1 param2

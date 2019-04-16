@@ -19,6 +19,14 @@ public class BookServiceTest extends BaseTestDubbo {
         book.setBookName("神奇校车");
         book.setAuthor("乔安娜柯尔");
         book.setCreateTime(new Date());
+        bookService.insertBook(book);
+    }
+
+    @Test
+    public void insertBook1(){
+        Book book=new Book();
+        book.setBookName("巴黎圣母院");
+        book.setAuthor("维克多·雨果");
         bookService.insertBook1(book);
     }
 
