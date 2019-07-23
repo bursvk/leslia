@@ -4,6 +4,7 @@ import com.leslia.api.pojo.User;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -19,7 +20,7 @@ public class RabbitMqTest {
     @Before
     public void setUp() throws Exception {
         context = new ClassPathXmlApplicationContext("spring/rabbitmq.xml");
-        amqpTemplate= (AmqpTemplate) context.getBean("rabbitTemplate");
+        amqpTemplate= (RabbitTemplate) context.getBean("amqpTemplate");
     }
 
     @Test

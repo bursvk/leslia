@@ -13,7 +13,9 @@
 
     <rabbit:admin connection-factory="rmqConnectionFactory"/>
 
-    <rabbit:template id="rabbitTemplate" connection-factory="rmqConnectionFactory"/>
+
+    <rabbit:template id="amqpTemplate" connection-factory="rmqConnectionFactory"/>
+
 
     <rabbit:queue name="queues"/>
     <rabbit:queue name="queueMap"/>
@@ -37,13 +39,13 @@
 
     <rabbit:direct-exchange name="exchange.direct">
         <rabbit:bindings>
-            <rabbit:binding queue="queueMap" key="direct"></rabbit:binding>
+            <rabbit:binding queue="queueMap" key="direct"/>
         </rabbit:bindings>
     </rabbit:direct-exchange>
 
     <rabbit:topic-exchange name="exchange.topic">
         <rabbit:bindings>
-            <rabbit:binding queue="queueUser" pattern="#.topic"></rabbit:binding>
+            <rabbit:binding queue="queueUser" pattern="#.topic"/>
         </rabbit:bindings>
     </rabbit:topic-exchange>
 

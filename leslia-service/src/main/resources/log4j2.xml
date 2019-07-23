@@ -45,15 +45,10 @@
 	</appenders>
 
 	<loggers>
-		<logger name="org.mybatis" level="info"/>
-		<logger name="org.slf4j" level="info" />
-		<logger name="org.quartz" level="info" />
-		<logger name="com.alibaba.dubbo" level="info" />
-		<logger name="org.apache.activemq" level="info" />
-		<logger name="org.springframework" level="info" />
-		<logger name="org.apache.zookeeper" level="info" />
+		<logger name="org.apache.activemq.transport" level="info" />
+		<logger name="org.springframework.amqp.rabbit.connection" level="info"/>
 		<logger name="org.springframework.transaction" level="debug" />
-		<root level="DEBUG">
+		<root level="info">
 			<AppenderRef ref="Console" />
 			<AppenderRef ref="ProductLog" />
 			<AppenderRef ref="RollingFile" />

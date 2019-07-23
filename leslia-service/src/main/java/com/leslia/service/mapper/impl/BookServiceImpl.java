@@ -18,6 +18,7 @@ public class BookServiceImpl implements BookService {
     @Override
     public void insertBook(Book book) {
         bookMapper.insertBook(book);
+        throw new RuntimeException("book");
     }
 
     @Override

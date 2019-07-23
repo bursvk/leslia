@@ -38,7 +38,7 @@ public class ActiveMqTest {
         Map<String,Object> map=new HashMap<>();
         map.put("userId",1);
         map.put("username","lucy");
-        jmsQueueTemplate.convertAndSend("service.queue.object",map);
+        jmsQueueTemplate.convertAndSend("service.queue.map",map);
     }
 
 
